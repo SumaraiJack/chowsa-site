@@ -3,19 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ChowSA — Plan the week. Know the cost before you shop. Cook anything.</title>
-<meta name="description" content="ChowSA plans your week, builds a budgeted shopping list, and cooks any recipe — vegan, halaal, kosher, diabetic, keto, or standard. Made in Mzansi for every household.">
-<meta name="keywords" content="meal planner south africa, AI meal plan, grocery budget app, vegan meal planner, halaal meal planner, kosher meal planner, recipe generator, SA pantry app, ChowSA">
+<title>ChowSA — Plan the week. Cook anything. Spend less.</title>
+<meta name="description" content="ChowSA is South Africa's friendliest kitchen sidekick. AI meal plans, a smart pantry, budget-aware shopping lists and recipes for every diet — Mzansi-flavoured, household-friendly.">
+<meta name="keywords" content="meal planner south africa, AI meal plan, vegan halaal kosher planner, grocery budget app, smart pantry, ChowSA, recipe scanner">
 <meta name="theme-color" content="#0C351E">
-<meta property="og:title" content="ChowSA — Plan the week. Cook anything.">
-<meta property="og:description" content="AI meal planning, budget-aware shopping lists, and recipes for any diet. Made in Mzansi.">
+<meta property="og:title" content="ChowSA — Plan the week. Cook anything. Spend less.">
+<meta property="og:description" content="AI meal plans, smart pantry, budget shopping lists and recipes for every diet. Made in Mzansi.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="assets/screens/home.jpg">
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
   :root {
@@ -25,500 +25,599 @@
     --mango-2:   #F4B454;
     --cream:     #F4F1EA;
     --cream-2:   #FAF7F0;
-    --ink:       #1A1A1A;
-    --muted:     #55534E;
+    --mint:      #E8EFE4;
     --leaf:      #4A8A3F;
+    --ink:       #16221C;
+    --muted:     #55534E;
+    --paper:     #ffffff;
     --gold:      #FFD23F;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     background: var(--cream);
     color: var(--ink);
-    line-height: 1.5;
+    line-height: 1.55;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }
   h1, h2, h3, h4 {
-    font-family: 'Bebas Neue', 'Inter', sans-serif;
-    letter-spacing: 0.5px;
-    line-height: 1.05;
+    font-family: 'Bricolage Grotesque', 'Inter', sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.02;
     color: var(--forest);
   }
   a { color: inherit; text-decoration: none; }
   img { display: block; max-width: 100%; height: auto; }
+  button { font-family: inherit; }
 
-  body::before {
-    content: '';
-    position: fixed; inset: 0;
-    background-image:
-      radial-gradient(circle at 20% 10%, rgba(229,155,39,0.06) 0%, transparent 40%),
-      radial-gradient(circle at 80% 90%, rgba(12,53,30,0.05) 0%, transparent 40%);
-    pointer-events: none;
-    z-index: -1;
-  }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
 
   /* ── Nav ───────────────────────────────────────────────── */
   nav {
     position: sticky; top: 0; z-index: 100;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    background: rgba(244, 241, 234, 0.85);
-    border-bottom: 1px solid rgba(12,53,30,0.08);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    background: rgba(244, 241, 234, 0.78);
+    border-bottom: 1px solid rgba(12,53,30,0.07);
   }
   .nav-inner {
-    max-width: 1200px; margin: 0 auto;
-    padding: 16px 24px;
+    max-width: 1180px; margin: 0 auto;
+    padding: 14px 24px;
     display: flex; align-items: center; justify-content: space-between;
   }
   .logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 28px; color: var(--forest);
-    letter-spacing: 1px;
-    display: flex; align-items: center; gap: 8px;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 800; font-size: 22px; color: var(--forest);
+    display: flex; align-items: center; gap: 10px;
+    letter-spacing: -0.02em;
   }
-  .logo .spoon { font-size: 24px; transform: rotate(-15deg); display: inline-block; }
+  .logo .dot {
+    width: 28px; height: 28px; border-radius: 9px;
+    background: var(--mango);
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    box-shadow: 0 4px 12px rgba(229,155,39,0.35);
+  }
   .nav-links { display: flex; gap: 28px; font-size: 14px; font-weight: 600; }
-  .nav-links a { color: var(--forest); opacity: 0.75; transition: opacity 0.2s; }
+  .nav-links a { color: var(--forest); opacity: 0.7; transition: opacity 0.15s; }
   .nav-links a:hover { opacity: 1; }
   .nav-cta {
-    background: var(--mango); color: white; font-weight: 800;
-    padding: 9px 18px; border-radius: 999px; font-size: 14px;
-    transition: transform 0.15s;
+    background: var(--forest); color: white; font-weight: 700;
+    padding: 10px 18px; border-radius: 999px; font-size: 14px;
+    transition: transform 0.15s, background 0.15s;
   }
-  .nav-cta:hover { transform: translateY(-1px); }
-  @media (max-width: 720px) { .nav-links { display: none; } }
+  .nav-cta:hover { transform: translateY(-1px); background: var(--forest-2); }
+  @media (max-width: 760px) { .nav-links { display: none; } }
 
   /* ── Hero ───────────────────────────────────────────────── */
   .hero {
     position: relative; overflow: hidden;
-    background: linear-gradient(135deg, var(--forest) 0%, var(--forest-2) 60%, #133A24 100%);
-    color: white;
-    padding: 72px 24px 140px;
+    background: var(--cream);
+    padding: 72px 0 56px;
   }
   .hero::before {
-    content: ''; position: absolute; inset: 0;
-    background-image:
-      radial-gradient(circle at 15% 30%, rgba(229,155,39,0.18) 0%, transparent 35%),
-      radial-gradient(circle at 85% 70%, rgba(255,210,63,0.10) 0%, transparent 40%);
+    content: ''; position: absolute;
+    top: -120px; right: -180px;
+    width: 520px; height: 520px;
+    background: radial-gradient(circle, rgba(229,155,39,0.20) 0%, transparent 60%);
     pointer-events: none;
   }
-  .hero-inner {
-    max-width: 1200px; margin: 0 auto;
-    display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px;
-    align-items: center; position: relative; z-index: 1;
+  .hero::after {
+    content: ''; position: absolute;
+    bottom: -120px; left: -120px;
+    width: 360px; height: 360px;
+    background: radial-gradient(circle, rgba(74,138,63,0.16) 0%, transparent 60%);
+    pointer-events: none;
   }
-  @media (max-width: 880px) { .hero-inner { grid-template-columns: 1fr; gap: 40px; } }
+  .hero-grid {
+    position: relative; z-index: 1;
+    display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 56px;
+    align-items: center;
+  }
+  @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: white; color: var(--forest);
+    font-size: 12px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 1.5px;
+    padding: 8px 14px; border-radius: 999px;
+    border: 1px solid rgba(12,53,30,0.08);
+    margin-bottom: 24px;
+    box-shadow: 0 2px 8px rgba(12,53,30,0.04);
+  }
+  .hero-eyebrow .dotanim {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--mango);
+    box-shadow: 0 0 0 0 rgba(229,155,39,0.6);
+    animation: pulse 2s ease-out infinite;
+  }
+  @keyframes pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(229,155,39,0.55); }
+    100% { box-shadow: 0 0 0 12px rgba(229,155,39,0); }
+  }
 
   .hero h1 {
-    font-size: clamp(44px, 6.4vw, 88px);
-    color: white;
-    margin-bottom: 24px;
+    font-size: clamp(44px, 7vw, 88px);
+    color: var(--forest);
+    margin-bottom: 22px;
   }
-  .hero h1 .accent { color: var(--mango-2); }
+  .hero h1 .swirl {
+    background: linear-gradient(120deg, var(--mango) 0%, #ED7B23 100%);
+    -webkit-background-clip: text; background-clip: text;
+    color: transparent;
+    font-style: italic;
+  }
+  .hero h1 .underline {
+    position: relative; white-space: nowrap;
+  }
+  .hero h1 .underline::after {
+    content: ''; position: absolute;
+    left: -2%; right: -2%; bottom: -6px;
+    height: 10px;
+    background: var(--mango);
+    border-radius: 6px;
+    opacity: 0.55;
+    z-index: -1;
+  }
   .hero-sub {
-    font-size: clamp(17px, 2vw, 21px);
-    line-height: 1.55;
-    color: rgba(255,255,255,0.85);
-    max-width: 560px;
-    margin-bottom: 32px;
+    font-size: clamp(17px, 1.6vw, 19px);
+    color: var(--muted); line-height: 1.6;
+    max-width: 540px; margin-bottom: 32px;
   }
-  .hero-cta-row {
-    display: flex; gap: 16px; flex-wrap: wrap;
-  }
+  .hero-sub strong { color: var(--forest); font-weight: 700; }
+  .hero-cta-row { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
   .btn {
     display: inline-flex; align-items: center; gap: 10px;
-    padding: 16px 28px; border-radius: 999px;
-    font-weight: 800; font-size: 16px;
-    transition: transform 0.15s, box-shadow 0.2s;
+    padding: 16px 26px; border-radius: 999px;
+    font-weight: 700; font-size: 16px;
+    transition: transform 0.15s, box-shadow 0.2s, background 0.15s;
     cursor: pointer; border: none;
   }
   .btn-primary {
-    background: var(--mango); color: white;
-    box-shadow: 0 8px 24px rgba(229,155,39,0.4);
+    background: var(--forest); color: white;
+    box-shadow: 0 10px 24px rgba(12,53,30,0.25);
   }
-  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(229,155,39,0.5); }
+  .btn-primary:hover { transform: translateY(-2px); background: var(--forest-2); }
   .btn-ghost {
-    background: rgba(255,255,255,0.1); color: white;
-    border: 1.5px solid rgba(255,255,255,0.25);
+    background: white; color: var(--forest);
+    border: 1.5px solid rgba(12,53,30,0.12);
   }
-  .btn-ghost:hover { background: rgba(255,255,255,0.18); }
+  .btn-ghost:hover { border-color: var(--forest); }
 
-  .hero-meta {
-    margin-top: 32px;
+  .hero-trustline {
+    margin-top: 28px;
     display: flex; gap: 22px; flex-wrap: wrap;
-    font-size: 13px; color: rgba(255,255,255,0.72);
+    font-size: 13px; color: var(--muted);
   }
-  .hero-meta strong { color: white; font-weight: 700; }
+  .hero-trustline span { display: inline-flex; align-items: center; gap: 6px; }
+  .hero-trustline .tick {
+    width: 18px; height: 18px; border-radius: 50%;
+    background: var(--forest); color: white;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 800;
+  }
 
+  /* Phone in hero */
+  .hero-stage { position: relative; display: flex; justify-content: center; }
   .phone {
-    position: relative; margin: 0 auto;
-    width: 280px; max-width: 100%;
+    position: relative;
+    width: 270px; max-width: 100%;
     border-radius: 42px;
-    background: #111;
-    padding: 12px;
+    background: #0a0a0a;
+    padding: 10px;
     box-shadow:
-      0 30px 80px rgba(0,0,0,0.4),
-      0 8px 16px rgba(0,0,0,0.2),
-      inset 0 0 0 1px rgba(255,255,255,0.08);
-    transform: rotate(-3deg);
-    transition: transform 0.4s;
+      0 30px 80px rgba(12,53,30,0.25),
+      0 8px 20px rgba(12,53,30,0.12),
+      inset 0 0 0 1px rgba(255,255,255,0.06);
   }
-  .phone:hover { transform: rotate(-1deg) translateY(-6px); }
   .phone::before {
     content: ''; position: absolute;
-    top: 16px; left: 50%; transform: translateX(-50%);
-    width: 80px; height: 18px; border-radius: 999px;
+    top: 14px; left: 50%; transform: translateX(-50%);
+    width: 78px; height: 16px; border-radius: 999px;
     background: #000; z-index: 2;
   }
   .phone img {
-    border-radius: 32px; display: block; width: 100%;
+    border-radius: 34px; display: block; width: 100%;
   }
-  .phone-glow {
-    position: absolute; inset: -40px;
-    background: radial-gradient(circle, rgba(229,155,39,0.35) 0%, transparent 70%);
-    z-index: -1; filter: blur(40px);
+  .hero-stage .phone {
+    transform: rotate(-2.5deg);
+    transition: transform 0.5s ease;
   }
+  .hero-stage:hover .phone { transform: rotate(-1deg) translateY(-4px); }
 
-  .hero-tag {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(255,210,63,0.18);
-    border: 1px solid rgba(255,210,63,0.4);
-    color: var(--gold);
-    font-size: 12px; font-weight: 700;
-    text-transform: uppercase; letter-spacing: 1px;
-    padding: 6px 14px; border-radius: 999px;
-    margin-bottom: 24px;
-  }
-  .pulse-dot {
-    width: 8px; height: 8px; border-radius: 50%;
-    background: var(--gold);
-    animation: pulse 1.8s ease-out infinite;
-  }
-  @keyframes pulse {
-    0%   { box-shadow: 0 0 0 0 rgba(255,210,63,0.6); }
-    100% { box-shadow: 0 0 0 14px rgba(255,210,63,0); }
-  }
-
-  /* ── Why row ───────────────────────────────────────────────── */
-  .why {
-    max-width: 1200px; margin: -70px auto 80px;
-    padding: 0 24px; position: relative; z-index: 5;
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
-  }
-  @media (max-width: 880px) { .why { grid-template-columns: 1fr; } }
-  .why-card {
-    background: white; border-radius: 24px;
-    padding: 28px 24px;
-    box-shadow: 0 20px 50px rgba(12,53,30,0.10);
+  /* Floating chips around the hero phone */
+  .float-chip {
+    position: absolute;
+    background: white; padding: 10px 14px;
+    border-radius: 16px;
+    box-shadow: 0 14px 30px rgba(12,53,30,0.14);
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 13px; font-weight: 700; color: var(--forest);
     border: 1px solid rgba(12,53,30,0.06);
-    transition: transform 0.2s;
+    animation: bob 5s ease-in-out infinite;
   }
-  .why-card:hover { transform: translateY(-4px); }
-  .why-emoji { font-size: 32px; margin-bottom: 12px; display: block; }
-  .why-card h3 {
-    font-size: 24px; margin-bottom: 8px;
+  .float-chip.chip-1 { top: 10%; left: -8%; }
+  .float-chip.chip-2 { bottom: 14%; right: -10%; animation-delay: 1.2s; }
+  .float-chip.chip-3 { top: 50%; right: -14%; animation-delay: 2.4s; }
+  .float-chip .badge-emoji {
+    width: 28px; height: 28px; border-radius: 8px;
+    background: var(--cream); display: inline-flex;
+    align-items: center; justify-content: center;
+    font-size: 16px;
   }
-  .why-card p {
-    color: var(--muted); font-size: 14px; line-height: 1.6;
+  @keyframes bob {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-8px); }
+  }
+  @media (max-width: 480px) {
+    .float-chip.chip-1, .float-chip.chip-2, .float-chip.chip-3 { display: none; }
   }
 
-  /* ── Section ───────────────────────────────────────────────── */
-  section.feature, section.story, section.pro, section.faq, section.howto {
-    max-width: 1200px; margin: 0 auto;
-    padding: 80px 24px;
+  /* ── Marquee ───────────────────────────────────────────────── */
+  .marquee {
+    background: var(--forest);
+    color: var(--cream);
+    padding: 16px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    border-top: 2px solid rgba(255,255,255,0.05);
+    border-bottom: 2px solid rgba(255,255,255,0.05);
   }
+  .marquee-track {
+    display: inline-block;
+    animation: marquee 38s linear infinite;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 22px; font-weight: 800;
+    letter-spacing: 0.5px;
+  }
+  .marquee-track span { margin-right: 56px; }
+  .marquee-track .dot { color: var(--mango); }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  /* ── Section title ───────────────────────────────────────────────── */
+  section { padding: 88px 0; }
   .section-eyebrow {
     display: inline-block;
-    background: var(--forest); color: var(--gold);
-    font-size: 11px; font-weight: 800;
-    text-transform: uppercase; letter-spacing: 1.5px;
+    background: rgba(229,155,39,0.16);
+    color: var(--mango);
+    font-size: 12px; font-weight: 800;
+    text-transform: uppercase; letter-spacing: 1.6px;
     padding: 6px 14px; border-radius: 999px;
-    margin-bottom: 16px;
+    margin-bottom: 18px;
   }
   .section-title {
-    font-size: clamp(40px, 5vw, 64px);
-    margin-bottom: 20px; max-width: 760px;
+    font-size: clamp(40px, 5.4vw, 64px);
+    max-width: 720px;
+    margin-bottom: 18px;
   }
   .section-lead {
-    font-size: 18px; color: var(--muted); max-width: 620px;
-    line-height: 1.6; margin-bottom: 40px;
+    font-size: 18px; color: var(--muted);
+    max-width: 600px; line-height: 1.65;
+    margin-bottom: 48px;
   }
 
-  /* ── Feature gallery ───────────────────────────────────────────────── */
-  .gallery {
-    background: linear-gradient(180deg, transparent 0%, rgba(12,53,30,0.04) 100%);
+  /* ── Bento ───────────────────────────────────────────────── */
+  .bento {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: minmax(160px, auto);
+    gap: 20px;
   }
-  .gallery-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
-    margin-top: 40px;
-  }
-  @media (max-width: 880px) { .gallery-grid { grid-template-columns: 1fr; } }
-  .gallery-card {
-    background: white; border-radius: 24px;
-    padding: 28px 24px 0;
-    box-shadow: 0 10px 30px rgba(12,53,30,0.08);
-    overflow: hidden;
-    transition: transform 0.2s;
-    border: 1px solid rgba(12,53,30,0.04);
+  @media (max-width: 880px) { .bento { grid-template-columns: repeat(2, 1fr); } }
+
+  .tile {
+    background: var(--paper);
+    border-radius: 28px;
+    padding: 28px;
+    border: 1px solid rgba(12,53,30,0.06);
+    box-shadow: 0 8px 24px rgba(12,53,30,0.05);
+    position: relative; overflow: hidden;
     display: flex; flex-direction: column;
+    transition: transform 0.2s, box-shadow 0.2s;
   }
-  .gallery-card:hover { transform: translateY(-4px); }
-  .gallery-card .tag {
-    font-size: 11px; font-weight: 800; letter-spacing: 1.2px;
-    text-transform: uppercase; color: var(--mango);
-    margin-bottom: 8px;
+  .tile:hover { transform: translateY(-4px); box-shadow: 0 14px 34px rgba(12,53,30,0.10); }
+
+  .tile .tile-tag {
+    display: inline-block;
+    font-size: 11px; font-weight: 800;
+    text-transform: uppercase; letter-spacing: 1.4px;
+    color: var(--mango);
+    margin-bottom: 10px;
   }
-  .gallery-card h4 {
-    font-size: 26px; margin-bottom: 8px; line-height: 1.05;
+  .tile h3 {
+    font-size: clamp(24px, 2.4vw, 30px);
+    margin-bottom: 10px;
   }
-  .gallery-card p {
-    font-size: 14px; color: var(--muted); margin-bottom: 18px;
-    line-height: 1.55; min-height: 44px;
+  .tile p {
+    font-size: 14px; color: var(--muted);
+    line-height: 1.6;
   }
-  .gallery-card .shot {
-    border-radius: 16px 16px 0 0;
-    width: 100%; box-shadow: 0 -6px 20px rgba(0,0,0,0.08);
+  .tile .shot {
     margin-top: auto;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 12px 26px rgba(12,53,30,0.12);
+  }
+  .tile .shot img { width: 100%; display: block; }
+
+  /* Bento layout — desktop */
+  .tile.t-planner   { grid-column: span 4; grid-row: span 2; background: linear-gradient(160deg, #0C351E 0%, #1A4D2E 100%); color: white; }
+  .tile.t-planner h3 { color: white; }
+  .tile.t-planner p  { color: rgba(255,255,255,0.78); }
+  .tile.t-planner .tile-tag { color: var(--mango-2); }
+
+  .tile.t-ai        { grid-column: span 2; grid-row: span 2; background: var(--mango); }
+  .tile.t-ai h3, .tile.t-ai p { color: var(--forest); }
+  .tile.t-ai .tile-tag { color: var(--forest); background: rgba(255,255,255,0.5); padding: 4px 10px; border-radius: 999px; }
+
+  .tile.t-pantry    { grid-column: span 2; grid-row: span 2; }
+  .tile.t-shopping  { grid-column: span 2; grid-row: span 2; background: var(--mint); }
+  .tile.t-vegan     { grid-column: span 2; grid-row: span 1; }
+  .tile.t-share     { grid-column: span 4; grid-row: span 2; }
+
+  @media (max-width: 880px) {
+    .tile.t-planner, .tile.t-ai, .tile.t-pantry,
+    .tile.t-shopping, .tile.t-vegan, .tile.t-share {
+      grid-column: span 2; grid-row: auto;
+    }
+  }
+
+  /* Vegan toggle illustration */
+  .vegan-illu {
+    margin-top: auto;
+    display: flex; align-items: center; gap: 12px;
+    background: var(--cream);
+    padding: 12px 16px; border-radius: 14px;
+    font-weight: 700; color: var(--forest);
+  }
+  .vegan-illu .swatch {
+    width: 32px; height: 18px; border-radius: 999px;
+    background: var(--mango); position: relative;
+    flex-shrink: 0;
+  }
+  .vegan-illu .swatch::after {
+    content: ''; position: absolute; top: 2px; right: 2px;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--forest);
+  }
+
+  /* ── Diets band ───────────────────────────────────────────────── */
+  .band-diets {
+    background: var(--forest);
+    color: white; text-align: center;
+    border-radius: 36px;
+    padding: 64px 24px;
+    margin: 24px;
+    position: relative; overflow: hidden;
+  }
+  .band-diets::before {
+    content: ''; position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 20% 30%, rgba(229,155,39,0.18) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(74,138,63,0.20) 0%, transparent 40%);
+    pointer-events: none;
+  }
+  .band-diets > * { position: relative; z-index: 1; }
+  .band-diets .section-eyebrow {
+    background: rgba(255,210,63,0.18);
+    color: var(--gold);
+  }
+  .band-diets h2 {
+    color: white;
+    font-size: clamp(36px, 4.6vw, 56px);
+    margin-bottom: 14px;
+  }
+  .band-diets p {
+    color: rgba(255,255,255,0.78);
+    max-width: 600px; margin: 0 auto 32px;
+    font-size: 17px;
+  }
+  .diet-chips {
+    display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
+    max-width: 760px; margin: 0 auto;
+  }
+  .diet-chip {
+    background: rgba(255,255,255,0.07);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.18);
+    padding: 11px 18px; border-radius: 999px;
+    font-size: 14px; font-weight: 700;
+    transition: background 0.15s;
+  }
+  .diet-chip:hover { background: rgba(255,255,255,0.14); }
+  .diet-chip.hot {
+    background: var(--mango);
+    color: var(--forest);
+    border-color: var(--mango);
   }
 
   /* ── How it works ───────────────────────────────────────────────── */
-  .howto { text-align: center; }
   .howto-grid {
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
-    margin-top: 40px;
   }
-  @media (max-width: 720px) { .howto-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 800px) { .howto-grid { grid-template-columns: 1fr; } }
   .howto-card {
-    background: white; padding: 36px 24px;
+    background: var(--paper); padding: 36px 28px;
     border-radius: 24px;
     border: 1px solid rgba(12,53,30,0.06);
-    text-align: left;
-    box-shadow: 0 6px 20px rgba(12,53,30,0.05);
+    position: relative;
   }
   .howto-card .step {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 56px; color: var(--mango);
-    line-height: 1; margin-bottom: 8px;
-    display: block;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 56px; font-weight: 800;
+    color: var(--mango); line-height: 1;
+    margin-bottom: 12px; display: block;
+    font-style: italic;
   }
-  .howto-card h4 { font-size: 26px; margin-bottom: 8px; }
-  .howto-card p { color: var(--muted); font-size: 14px; line-height: 1.6; }
+  .howto-card h4 { font-size: 24px; margin-bottom: 10px; }
+  .howto-card p { color: var(--muted); font-size: 15px; line-height: 1.6; }
 
-  /* ── Diet strip ───────────────────────────────────────────────── */
-  .diet-strip {
-    background: var(--cream-2);
-    padding: 60px 24px;
-    border-top: 1px solid rgba(12,53,30,0.06);
-    border-bottom: 1px solid rgba(12,53,30,0.06);
+  /* ── Audience / quotes ───────────────────────────────────────────────── */
+  .audience-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px;
   }
-  .diet-inner {
-    max-width: 1200px; margin: 0 auto; text-align: center;
-  }
-  .diet-inner h2 {
-    font-size: clamp(32px, 4vw, 48px);
-    margin-bottom: 12px;
-  }
-  .diet-inner p {
-    color: var(--muted); font-size: 16px; margin-bottom: 28px;
-    max-width: 620px; margin-left: auto; margin-right: auto;
-  }
-  .diet-chips {
-    display: flex; flex-wrap: wrap; gap: 10px;
-    justify-content: center;
-  }
-  .diet-chip {
-    background: white; color: var(--forest);
-    border: 1.5px solid rgba(12,53,30,0.12);
-    padding: 10px 18px; border-radius: 999px;
-    font-size: 14px; font-weight: 700;
-  }
-  .diet-chip.on {
-    background: var(--forest); color: white;
-    border-color: var(--forest);
-  }
-
-  /* ── Built for SA strip ───────────────────────────────────────────────── */
-  .story { text-align: center; }
-  .story-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
-    margin-top: 40px;
-  }
-  @media (max-width: 720px) { .story-grid { grid-template-columns: 1fr; } }
-  .story-card {
-    background: white; padding: 32px 24px;
-    border-radius: 20px;
+  @media (max-width: 800px) { .audience-grid { grid-template-columns: 1fr; } }
+  .quote-card {
+    background: var(--paper); padding: 28px;
+    border-radius: 24px;
     border: 1px solid rgba(12,53,30,0.06);
-    text-align: left;
+    box-shadow: 0 6px 18px rgba(12,53,30,0.04);
   }
-  .story-card .num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 48px; color: var(--mango);
-    line-height: 1;
-    display: block; margin-bottom: 8px;
+  .quote-card .avatar {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--mango); color: white;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 16px;
+    margin-bottom: 14px;
+    font-family: 'Bricolage Grotesque', sans-serif;
   }
-  .story-card h4 { font-size: 24px; margin-bottom: 8px; }
-  .story-card p { color: var(--muted); font-size: 14px; }
+  .quote-card .avatar.v2 { background: var(--forest); }
+  .quote-card .avatar.v3 { background: var(--leaf); }
+  .quote-card .quote {
+    font-size: 17px; color: var(--ink);
+    line-height: 1.55; margin-bottom: 14px;
+    font-weight: 500;
+  }
+  .quote-card .who {
+    font-size: 13px; color: var(--muted); font-weight: 600;
+  }
 
-  /* ── CTA pro ───────────────────────────────────────────────── */
-  .pro-wrap {
-    background: linear-gradient(135deg, var(--forest) 0%, var(--forest-2) 100%);
-    color: white;
-    border-radius: 40px;
-    padding: 60px;
-    position: relative; overflow: hidden;
+  /* ── Made for SA strip ───────────────────────────────────────────────── */
+  .sa-strip {
+    background: var(--mint);
+    border-radius: 28px;
+    padding: 56px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+    align-items: center;
   }
-  @media (max-width: 720px) { .pro-wrap { padding: 36px 24px; border-radius: 28px; } }
-  .pro-wrap::before {
-    content: '';
-    position: absolute; top: -100px; right: -100px;
-    width: 400px; height: 400px;
-    background: radial-gradient(circle, rgba(229,155,39,0.3) 0%, transparent 70%);
+  @media (max-width: 800px) { .sa-strip { grid-template-columns: 1fr; padding: 36px; } }
+  .sa-strip h2 { font-size: clamp(34px, 4.2vw, 48px); margin-bottom: 16px; }
+  .sa-strip p { color: var(--muted); font-size: 16px; line-height: 1.6; margin-bottom: 20px; }
+  .sa-tags {
+    display: flex; flex-wrap: wrap; gap: 8px;
+  }
+  .sa-tag {
+    background: white; color: var(--forest);
+    border: 1px solid rgba(12,53,30,0.08);
+    padding: 6px 14px; border-radius: 999px;
+    font-size: 13px; font-weight: 700;
+  }
+
+  /* ── Download CTA ───────────────────────────────────────────────── */
+  .download-wrap {
+    background: var(--mango);
+    border-radius: 36px;
+    padding: 64px;
+    position: relative; overflow: hidden;
+    color: var(--forest);
+  }
+  @media (max-width: 720px) { .download-wrap { padding: 40px 28px; border-radius: 24px; } }
+  .download-wrap::before {
+    content: ''; position: absolute;
+    top: -120px; left: -100px;
+    width: 360px; height: 360px;
+    background: radial-gradient(circle, rgba(255,255,255,0.35) 0%, transparent 60%);
     pointer-events: none;
   }
-  .pro-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 50px;
-    position: relative; z-index: 1; align-items: center;
+  .download-grid {
+    position: relative; z-index: 1;
+    display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px;
+    align-items: center;
   }
-  @media (max-width: 720px) { .pro-grid { grid-template-columns: 1fr; gap: 32px; } }
-  .pro-grid h2 {
-    color: white; font-size: clamp(40px, 5vw, 64px);
-    margin-bottom: 18px;
+  @media (max-width: 800px) { .download-grid { grid-template-columns: 1fr; } }
+  .download-wrap h2 {
+    color: var(--forest);
+    font-size: clamp(40px, 5vw, 64px);
+    margin-bottom: 16px;
   }
-  .pro-grid h2 .accent { color: var(--mango-2); }
-  .pro-grid .lead {
-    font-size: 17px; color: rgba(255,255,255,0.85);
-    line-height: 1.65; margin-bottom: 28px;
+  .download-wrap p {
+    color: var(--forest); opacity: 0.82;
+    font-size: 18px; line-height: 1.6;
+    margin-bottom: 28px;
+    max-width: 480px;
   }
-  .pro-features { list-style: none; }
-  .pro-features li {
-    padding: 9px 0;
-    color: rgba(255,255,255,0.95);
-    font-size: 15px;
-    display: flex; align-items: flex-start; gap: 12px;
-  }
-  .pro-features li .ico {
-    width: 28px; height: 28px; border-radius: 8px;
-    background: rgba(229,155,39,0.25);
-    color: var(--mango-2);
-    display: inline-flex; align-items: center; justify-content: center;
-    font-size: 16px; flex-shrink: 0;
-  }
-  .price-card {
-    background: white; color: var(--ink);
-    border-radius: 28px; padding: 36px;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.3);
-  }
-  .price-card .badge {
-    display: inline-block;
-    background: var(--mango); color: white;
-    font-size: 11px; font-weight: 800;
-    padding: 4px 12px; border-radius: 999px;
-    text-transform: uppercase; letter-spacing: 1px;
-    margin-bottom: 12px;
-  }
-  .price-card h3 { font-size: 28px; margin-bottom: 6px; }
-  .price-card .price {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 72px; color: var(--forest);
-    line-height: 1; margin: 16px 0 4px;
-  }
-  .price-card .price small { font-size: 16px; color: var(--muted); font-weight: 400; }
-  .price-card .price-note {
-    font-size: 12px; color: var(--muted); margin-bottom: 24px;
-  }
-  .price-card .btn { width: 100%; justify-content: center; }
-  .price-card .micro {
-    font-size: 11px; color: var(--muted);
-    margin-top: 14px; text-align: center; line-height: 1.5;
-  }
+  .download-wrap .btn-primary { background: var(--forest); }
+  .download-wrap .micro { font-size: 12px; opacity: 0.7; margin-top: 18px; }
+  .download-stage { display: flex; justify-content: center; }
+  .download-stage .phone { transform: rotate(4deg); }
 
   /* ── FAQ ───────────────────────────────────────────────── */
-  .faq details {
-    background: white;
-    border-radius: 16px;
+  .faq-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+  }
+  @media (max-width: 800px) { .faq-grid { grid-template-columns: 1fr; } }
+  details.faq {
+    background: var(--paper);
+    border-radius: 18px;
     padding: 20px 24px;
-    margin-bottom: 12px;
     border: 1px solid rgba(12,53,30,0.06);
     transition: box-shadow 0.2s;
   }
-  .faq details[open] { box-shadow: 0 10px 30px rgba(12,53,30,0.08); }
-  .faq summary {
+  details.faq[open] { box-shadow: 0 10px 28px rgba(12,53,30,0.08); }
+  details.faq summary {
     cursor: pointer;
-    font-weight: 700; font-size: 16px;
+    font-weight: 700; font-size: 15px;
     color: var(--forest);
     list-style: none;
     display: flex; justify-content: space-between; align-items: center;
+    gap: 12px;
   }
-  .faq summary::-webkit-details-marker { display: none; }
-  .faq summary::after {
+  details.faq summary::-webkit-details-marker { display: none; }
+  details.faq summary::after {
     content: '+'; font-size: 24px; color: var(--mango); font-weight: 400;
-    transition: transform 0.2s;
+    transition: transform 0.2s; line-height: 1; flex-shrink: 0;
   }
-  .faq details[open] summary::after { transform: rotate(45deg); }
-  .faq details > p {
-    color: var(--muted); margin-top: 14px; line-height: 1.6;
-    font-size: 15px;
+  details.faq[open] summary::after { transform: rotate(45deg); }
+  details.faq > p {
+    color: var(--muted); margin-top: 12px; line-height: 1.6;
+    font-size: 14px;
   }
 
   /* ── Footer ───────────────────────────────────────────────── */
   footer {
     background: var(--forest);
     color: rgba(255,255,255,0.7);
-    padding: 60px 24px 30px;
-    margin-top: 80px;
+    padding: 56px 0 28px;
+    margin-top: 40px;
   }
-  .foot-inner { max-width: 1200px; margin: 0 auto; }
   .foot-grid {
-    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px;
-    margin-bottom: 40px;
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 36px;
+    margin-bottom: 36px;
   }
   @media (max-width: 720px) { .foot-grid { grid-template-columns: 1fr 1fr; gap: 28px; } }
   footer h5 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 18px; color: white;
-    letter-spacing: 1px; margin-bottom: 14px;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 800; font-size: 14px;
+    color: white; text-transform: uppercase;
+    letter-spacing: 1.4px; margin-bottom: 14px;
   }
   footer ul { list-style: none; }
   footer li { padding: 6px 0; font-size: 14px; }
   footer a:hover { color: var(--mango-2); }
   .foot-logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 32px; color: white;
-    margin-bottom: 12px;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 800; font-size: 28px; color: white;
+    margin-bottom: 12px; display: flex; align-items: center; gap: 10px;
   }
   .foot-tag { font-size: 14px; max-width: 320px; line-height: 1.6; }
   .foot-bottom {
-    padding-top: 24px;
-    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 22px;
+    border-top: 1px solid rgba(255,255,255,0.08);
     display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
     font-size: 12px;
-    color: rgba(255,255,255,0.5);
+    color: rgba(255,255,255,0.45);
   }
 
-  /* ── Marquee strip ───────────────────────────────────────────────── */
-  .strip {
-    background: var(--mango);
-    color: var(--forest);
-    padding: 16px 0;
-    overflow: hidden;
-    white-space: nowrap;
-    border-top: 4px solid var(--forest);
-    border-bottom: 4px solid var(--forest);
-  }
-  .strip-track {
-    display: inline-block;
-    animation: marquee 32s linear infinite;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 26px;
-    letter-spacing: 2px;
-  }
-  .strip-track span { margin-right: 60px; }
-  @keyframes marquee {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-50%); }
-  }
+  /* ── Reveal on scroll ───────────────────────────────────────────────── */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
 </style>
 </head>
 <body>
@@ -526,10 +625,12 @@
 <!-- ── NAV ─────────────────────────────────────────────────────── -->
 <nav>
   <div class="nav-inner">
-    <a href="#" class="logo"><span class="spoon">🥄</span> ChowSA</a>
+    <a href="#" class="logo">
+      <span class="dot">🥄</span> ChowSA
+    </a>
     <div class="nav-links">
       <a href="#features">Features</a>
-      <a href="#howitworks">How it works</a>
+      <a href="#how">How it works</a>
       <a href="#diets">Diets</a>
       <a href="#faq">FAQ</a>
     </div>
@@ -539,153 +640,135 @@
 
 <!-- ── HERO ─────────────────────────────────────────────────────── -->
 <section class="hero">
-  <div class="hero-inner">
-    <div>
-      <div class="hero-tag">
-        <span class="pulse-dot"></span>
-        Made in Mzansi · Plan · Cook · Budget
-      </div>
+  <div class="wrap hero-grid">
+    <div class="reveal in">
+      <span class="hero-eyebrow"><span class="dotanim"></span> Made in Mzansi · Plan · Cook · Budget</span>
       <h1>
         Plan the week.<br>
-        Know the cost<br>
-        <span class="accent">before you shop.</span>
+        <span class="underline">Cook anything.</span><br>
+        <span class="swirl">Spend less.</span>
       </h1>
       <p class="hero-sub">
-        ChowSA generates a full week of meals from your budget and diet, then
-        builds the shopping list — vegan, halaal, kosher, diabetic, keto, or
-        just <strong>what's for dinner tonight</strong>. AI does the planning.
-        You do the cooking.
+        ChowSA is your friendly kitchen sidekick — <strong>AI meal plans</strong>,
+        a smart pantry, budget-aware shopping lists and recipes for every
+        household. Vegan, halaal, kosher, diabetic, keto, or just "what's
+        for dinner tonight."
       </p>
       <div class="hero-cta-row">
         <a href="#download" class="btn btn-primary">Get the app →</a>
         <a href="#features" class="btn btn-ghost">See what it does</a>
       </div>
-      <div class="hero-meta">
-        <span>🗓️ <strong>AI meal plans</strong> in seconds</span>
-        <span>💸 <strong>Budget-aware</strong> shopping lists</span>
-        <span>🥬 <strong>Any diet</strong>, any household</span>
+      <div class="hero-trustline">
+        <span><span class="tick">✓</span> Free at launch</span>
+        <span><span class="tick">✓</span> No card needed</span>
+        <span><span class="tick">✓</span> Built in Cape Town</span>
       </div>
     </div>
-    <div>
+
+    <div class="hero-stage reveal in">
       <div class="phone">
-        <div class="phone-glow"></div>
-        <img src="assets/screens/home.jpg" alt="ChowSA home screen — plan the week, know the cost before you shop">
+        <img src="assets/screens/home.jpg" alt="ChowSA home screen — Plan the week. Know the cost before you shop. Vegan mode toggle visible.">
+      </div>
+      <div class="float-chip chip-1">
+        <span class="badge-emoji">🗓️</span>
+        Week planned
+      </div>
+      <div class="float-chip chip-2">
+        <span class="badge-emoji">💸</span>
+        R65.50 basket
+      </div>
+      <div class="float-chip chip-3">
+        <span class="badge-emoji">🌱</span>
+        Vegan mode on
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── MARQUEE STRIP ─────────────────────────────────────────────────────── -->
-<div class="strip">
-  <div class="strip-track">
-    <span>BOBOTIE · BREDIE · BRAAI · BUNNY CHOW · CHAKALAKA · KOEKSISTERS · MALVA · POTJIE · ROOIBOS · SAMP &amp; BEANS · UMNGQUSHO · BOEREWORS ·</span>
-    <span>BOBOTIE · BREDIE · BRAAI · BUNNY CHOW · CHAKALAKA · KOEKSISTERS · MALVA · POTJIE · ROOIBOS · SAMP &amp; BEANS · UMNGQUSHO · BOEREWORS ·</span>
+<!-- ── MARQUEE ─────────────────────────────────────────────────────── -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span>BOBOTIE <span class="dot">·</span> BREDIE <span class="dot">·</span> BUNNY CHOW <span class="dot">·</span> CHAKALAKA <span class="dot">·</span> KOEKSISTERS <span class="dot">·</span> MALVA <span class="dot">·</span> POTJIE <span class="dot">·</span> SAMP &amp; BEANS <span class="dot">·</span> ROOIBOS <span class="dot">·</span> WATERBLOMMETJIE <span class="dot">·</span> SOSATIES <span class="dot">·</span> BOEREWORS <span class="dot">·</span></span>
+    <span>BOBOTIE <span class="dot">·</span> BREDIE <span class="dot">·</span> BUNNY CHOW <span class="dot">·</span> CHAKALAKA <span class="dot">·</span> KOEKSISTERS <span class="dot">·</span> MALVA <span class="dot">·</span> POTJIE <span class="dot">·</span> SAMP &amp; BEANS <span class="dot">·</span> ROOIBOS <span class="dot">·</span> WATERBLOMMETJIE <span class="dot">·</span> SOSATIES <span class="dot">·</span> BOEREWORS <span class="dot">·</span></span>
   </div>
 </div>
 
-<!-- ── WHY ─────────────────────────────────────────────────────── -->
-<section class="why">
-  <div class="why-card">
-    <span class="why-emoji">🗓️</span>
-    <h3>Plan a whole week</h3>
-    <p>Pick budget, days and diet. AI fills breakfast, lunch and dinner, then drops it all into your planner.</p>
-  </div>
-  <div class="why-card">
-    <span class="why-emoji">💸</span>
-    <h3>See the bill first</h3>
-    <p>Every shopping list shows a live basket-vs-budget total in Rand — green if you're under, red if you're over.</p>
-  </div>
-  <div class="why-card">
-    <span class="why-emoji">✨</span>
-    <h3>Cook anything</h3>
-    <p>Type a dish, paste an Instagram link, or snap your fridge. Get a full recipe with steps and ingredients.</p>
-  </div>
-</section>
+<!-- ── FEATURES (Bento) ─────────────────────────────────────────────────────── -->
+<section id="features">
+  <div class="wrap reveal">
+    <span class="section-eyebrow">What's inside</span>
+    <h2 class="section-title">One app. The whole kitchen.</h2>
+    <p class="section-lead">
+      Planning, pantry, shopping, recipes, community — everything you actually use, sized to fit your life and your budget.
+    </p>
 
-<!-- ── FEATURES (gallery) ─────────────────────────────────────────────────────── -->
-<section class="feature gallery" id="features">
-  <span class="section-eyebrow">Six things ChowSA does</span>
-  <h2 class="section-title">One app. The whole kitchen.</h2>
-  <p class="section-lead">
-    Built for families budgeting groceries, students on R500 a week, singles who want
-    variety, and households with diet rules other apps ignore.
-  </p>
+    <div class="bento">
+      <div class="tile t-planner">
+        <span class="tile-tag">Weekly Planner</span>
+        <h3>Map out the week. Skip the 6pm panic.</h3>
+        <p>Tap any day to drop in breakfast, lunch or dinner. Green dots when the day is full, blue when there's a gap.</p>
+        <div class="shot">
+          <img src="assets/screens/planner.jpg" alt="Weekly Menu Planner calendar inside ChowSA">
+        </div>
+      </div>
 
-  <div class="gallery-grid">
-    <div class="gallery-card">
-      <span class="tag">Weekly Planner</span>
-      <h4>Map out the week</h4>
-      <p>Tap any day to assign breakfast, lunch or dinner. Green dots when the day is full.</p>
-      <img class="shot" src="assets/screens/planner.jpg" alt="Weekly meal planner calendar in ChowSA">
-    </div>
-    <div class="gallery-card">
-      <span class="tag">AI Meal Plan</span>
-      <h4>Set a budget, get a plan</h4>
-      <p>Budget, 1–14 days, diet, meal slots. AI builds the grid and the shopping list.</p>
-      <img class="shot" src="assets/screens/ai-plan.jpg" alt="AI meal plan generator with budget, days, diet and meal slots">
-    </div>
-    <div class="gallery-card">
-      <span class="tag">Smart Pantry</span>
-      <h4>Cook from the fridge</h4>
-      <p>Snap a photo, AI reads the ingredients, suggests three recipes you can actually make.</p>
-      <img class="shot" src="assets/screens/pantry.jpg" alt="Smart Pantry — snap your fridge and get recipes">
-    </div>
-    <div class="gallery-card">
-      <span class="tag">Shopping &amp; Budget</span>
-      <h4>Rands, not guesses</h4>
-      <p>Live basket total. Capture what you actually paid to build a real SA price history.</p>
-      <img class="shot" src="assets/screens/shopping.jpg" alt="Shopping list with live Rand basket total">
-    </div>
-    <div class="gallery-card">
-      <span class="tag">Vegan Mode</span>
-      <h4>One toggle, full swap</h4>
-      <p>Flip Vegan Mode and every recipe swaps meat, dairy and eggs for SA-available alternatives.</p>
-      <img class="shot" src="assets/screens/home.jpg" alt="Vegan Mode toggle on the ChowSA home screen">
-    </div>
-    <div class="gallery-card">
-      <span class="tag">Share-to-ChowSA</span>
-      <h4>Pull recipes from anywhere</h4>
-      <p>Share an Instagram, TikTok, YouTube or blog link. We scrape the recipe — ingredients and steps.</p>
-      <img class="shot" src="assets/screens/recipe.jpg" alt="Generate any recipe or scan a link in ChowSA">
-    </div>
-  </div>
-</section>
+      <div class="tile t-ai">
+        <span class="tile-tag">AI Meal Plan</span>
+        <h3>Budget in. Plan out.</h3>
+        <p>Tell ChowSA what you've got to spend, how many days and which diet — AI builds the whole grid plus the shopping list.</p>
+        <div class="shot">
+          <img src="assets/screens/ai-plan.jpg" alt="AI Meal Plan generator with budget, days and diet options">
+        </div>
+      </div>
 
-<!-- ── HOW IT WORKS ─────────────────────────────────────────────────────── -->
-<section class="howto" id="howitworks">
-  <span class="section-eyebrow">How it works</span>
-  <h2 class="section-title" style="margin-left:auto;margin-right:auto;">Three steps, one cooked dinner.</h2>
+      <div class="tile t-pantry">
+        <span class="tile-tag">Smart Pantry</span>
+        <h3>Snap the fridge. Get dinner.</h3>
+        <p>AI reads your ingredients from a photo and suggests three recipes you can actually make tonight.</p>
+        <div class="shot">
+          <img src="assets/screens/pantry.jpg" alt="Smart Pantry — snap your fridge to detect ingredients">
+        </div>
+      </div>
 
-  <div class="howto-grid">
-    <div class="howto-card">
-      <span class="step">01</span>
-      <h4>Set your budget &amp; diet</h4>
-      <p>Tell ChowSA your weekly food budget and how you eat — standard, vegan, halaal, kosher, diabetic, keto, gluten-free, more.</p>
-    </div>
-    <div class="howto-card">
-      <span class="step">02</span>
-      <h4>AI plans your week</h4>
-      <p>A full grid of breakfasts, lunches and dinners — each with real photos and SA-localised ingredients — drops into your planner.</p>
-    </div>
-    <div class="howto-card">
-      <span class="step">03</span>
-      <h4>Cook &amp; tick off the list</h4>
-      <p>The shopping list builds itself. Mark off items as you shop, watch the basket total update in Rand.</p>
+      <div class="tile t-shopping">
+        <span class="tile-tag">Shopping &amp; Budget</span>
+        <h3>Rands, not guesses.</h3>
+        <p>Every item shows an estimate. The basket total updates live — green if you're under budget, red if you've blown it.</p>
+        <div class="shot">
+          <img src="assets/screens/shopping.jpg" alt="Shopping list with live Rand basket total">
+        </div>
+      </div>
+
+      <div class="tile t-vegan">
+        <span class="tile-tag">Vegan Mode</span>
+        <h3>One toggle, full swap.</h3>
+        <p>Flip Vegan Mode on the home screen — every recipe swaps meat, dairy and eggs for SA-available alternatives.</p>
+        <div class="vegan-illu">
+          <span class="swatch"></span>
+          <span>Vegan mode is ON</span>
+        </div>
+      </div>
+
+      <div class="tile t-share">
+        <span class="tile-tag">Generate Any Recipe · Share-to-ChowSA</span>
+        <h3>Type a dish. Paste a link. Cook it.</h3>
+        <p>Get a full SA-localised recipe from a name like "Bobotie" — or share an Instagram, TikTok or YouTube link straight into ChowSA and we'll scrape the ingredients and steps.</p>
+        <div class="shot">
+          <img src="assets/screens/recipe.jpg" alt="Generate Any Recipe and Link Scanner inside ChowSA">
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ── DIETS ─────────────────────────────────────────────────────── -->
-<section class="diet-strip" id="diets">
-  <div class="diet-inner">
+<!-- ── DIETS BAND ─────────────────────────────────────────────────────── -->
+<section id="diets" style="padding: 24px 0;">
+  <div class="band-diets reveal">
     <span class="section-eyebrow">Any diet, any household</span>
     <h2>Finally, a planner that gets it.</h2>
-    <p>
-      Vegan, halaal, kosher, diabetic, gluten-free — the rules your household already lives by are
-      first-class options, not buried filters. Custom prompts welcome.
-    </p>
+    <p>Vegan, halaal, kosher, diabetic, gluten-free — the rules your household lives by are first-class options, not buried filters. Anything else? Use the Custom prompt.</p>
     <div class="diet-chips">
-      <span class="diet-chip on">Standard</span>
+      <span class="diet-chip hot">Standard</span>
       <span class="diet-chip">Vegan</span>
       <span class="diet-chip">Vegetarian</span>
       <span class="diet-chip">Anti-inflammatory</span>
@@ -696,121 +779,179 @@
       <span class="diet-chip">Gluten-free</span>
       <span class="diet-chip">Halaal</span>
       <span class="diet-chip">Kosher</span>
-      <span class="diet-chip">Custom…</span>
+      <span class="diet-chip">Custom prompt</span>
     </div>
   </div>
 </section>
 
-<!-- ── BUILT FOR SA ─────────────────────────────────────────────────────── -->
-<section class="story">
-  <span class="section-eyebrow">Built for SA</span>
-  <h2 class="section-title" style="margin-left:auto;margin-right:auto;">Made for Mzansi, head to toe.</h2>
-  <p class="section-lead" style="margin-left:auto;margin-right:auto;">
-    Bobotie, bredie, koeksisters and rooibos sit in the recipe library where mac-and-cheese sits everywhere else.
-    Local brands, Rand prices, hyper-local community channels in your suburb.
-  </p>
-  <div class="story-grid">
-    <div class="story-card">
-      <span class="num">SA</span>
-      <h4>Real Rand pricing</h4>
-      <p>Every shopping list speaks in Rands. Capture what you actually paid and ChowSA gets sharper.</p>
+<!-- ── HOW IT WORKS ─────────────────────────────────────────────────────── -->
+<section id="how">
+  <div class="wrap reveal">
+    <span class="section-eyebrow">How it works</span>
+    <h2 class="section-title">Three steps. One cooked dinner.</h2>
+    <div class="howto-grid">
+      <div class="howto-card">
+        <span class="step">01</span>
+        <h4>Set your budget &amp; diet</h4>
+        <p>Tell ChowSA how much you want to spend this week and how you eat — standard, vegan, halaal, diabetic, keto, the lot.</p>
+      </div>
+      <div class="howto-card">
+        <span class="step">02</span>
+        <h4>AI plans your week</h4>
+        <p>A full grid of breakfasts, lunches and dinners — each with a real photo and SA-localised ingredients — drops into your planner.</p>
+      </div>
+      <div class="howto-card">
+        <span class="step">03</span>
+        <h4>Cook &amp; tick off the list</h4>
+        <p>The shopping list builds itself. Tick items as you shop. Watch the Rand total update with every step.</p>
+      </div>
     </div>
-    <div class="story-card">
-      <span class="num">📍</span>
-      <h4>Hyperlocal community</h4>
-      <p>Suburb-level channels unlock once 10 neighbours are active — Spotted, Gatherings, Pantry, What's Cooking, Braai.</p>
+  </div>
+</section>
+
+<!-- ── AUDIENCE ─────────────────────────────────────────────────────── -->
+<section style="background: var(--cream-2);">
+  <div class="wrap reveal">
+    <span class="section-eyebrow">Made for</span>
+    <h2 class="section-title">Families, students, singles, vegans — basically everyone.</h2>
+
+    <div class="audience-grid">
+      <div class="quote-card">
+        <div class="avatar">FM</div>
+        <p class="quote">"Sunday morning, I plan dinners for the whole week. The shopping list builds itself. I haven't done a 'what's for dinner' fight in months."</p>
+        <div class="who">Family of four · Pretoria</div>
+      </div>
+      <div class="quote-card">
+        <div class="avatar v2">ST</div>
+        <p class="quote">"R500 a week. ChowSA actually plans around that. I cook real meals now instead of two-minute noodles every night."</p>
+        <div class="who">Student · Stellenbosch</div>
+      </div>
+      <div class="quote-card">
+        <div class="avatar v3">VG</div>
+        <p class="quote">"Every other recipe app pretends vegans don't exist. ChowSA has a toggle. Every recipe just works."</p>
+        <div class="who">Vegan household · Cape Town</div>
+      </div>
     </div>
-    <div class="story-card">
-      <span class="num">⚽</span>
-      <h4>World Cup hub</h4>
-      <p>Live banter and scores during the 2026 tournament. A temporary feature for matchday energy.</p>
+  </div>
+</section>
+
+<!-- ── SA STRIP ─────────────────────────────────────────────────────── -->
+<section>
+  <div class="wrap reveal">
+    <div class="sa-strip">
+      <div>
+        <span class="section-eyebrow">Built for SA</span>
+        <h2>Made for Mzansi, head to toe.</h2>
+        <p>
+          Bobotie, bredie and rooibos sit in the recipe library where mac-and-cheese sits everywhere else. Rand pricing throughout. Suburb-level community channels unlock when ten neighbours are active.
+        </p>
+        <div class="sa-tags">
+          <span class="sa-tag">Bobotie</span>
+          <span class="sa-tag">Bredie</span>
+          <span class="sa-tag">Bunny Chow</span>
+          <span class="sa-tag">Chakalaka</span>
+          <span class="sa-tag">Koeksisters</span>
+          <span class="sa-tag">Malva pudding</span>
+          <span class="sa-tag">Potjie</span>
+          <span class="sa-tag">Samp &amp; beans</span>
+          <span class="sa-tag">Waterblommetjie</span>
+          <span class="sa-tag">Sosaties</span>
+          <span class="sa-tag">Boerewors</span>
+          <span class="sa-tag">Umngqusho</span>
+        </div>
+      </div>
+      <div class="hero-stage" style="transform: scale(0.9);">
+        <div class="phone" style="transform: rotate(3deg);">
+          <img src="assets/screens/worldcup.jpg" alt="World Cup hub inside ChowSA — live banter during the 2026 tournament">
+        </div>
+        <div class="float-chip" style="bottom: 8%; right: 0;">
+          <span class="badge-emoji">⚽</span>
+          World Cup hub
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ── DOWNLOAD ─────────────────────────────────────────────────────── -->
-<section class="pro" id="download">
-  <div class="pro-wrap">
-    <div class="pro-grid">
-      <div>
-        <span class="section-eyebrow" style="background:var(--mango);color:white;">Free at launch</span>
-        <h2>The whole kitchen. <span class="accent">Free.</span></h2>
-        <p class="lead">
-          AI meal planning, smart pantry, share-to-app, vegan swaps, community channels — everything unlocked
-          on day one. No subscription, no card, no paywall.
-        </p>
-        <ul class="pro-features">
-          <li><span class="ico">🗓️</span> Weekly meal planner</li>
-          <li><span class="ico">✨</span> Unlimited AI meal plans</li>
-          <li><span class="ico">📸</span> Smart Pantry — snap your fridge</li>
-          <li><span class="ico">💸</span> Budget-aware shopping lists</li>
-          <li><span class="ico">🥬</span> Vegan Mode global toggle</li>
-          <li><span class="ico">🔗</span> Share-to-ChowSA from any app</li>
-        </ul>
-      </div>
-      <div class="price-card">
-        <span class="badge">Android · Google Play</span>
-        <h3>ChowSA</h3>
-        <div style="color:var(--muted);font-size:14px;">Every feature, every diet, every household. iOS on the roadmap.</div>
-        <div class="price">Free<small>&nbsp;forever, on the basics</small></div>
-        <div class="price-note">No card, no signup. Just download and cook.</div>
-        <a href="#" class="btn btn-primary">Get it on Google Play →</a>
-        <p class="micro">By using ChowSA you agree to our <a href="terms.html" style="text-decoration:underline;">Terms</a> and <a href="privacy.html" style="text-decoration:underline;">Privacy Policy</a>.</p>
+<section id="download">
+  <div class="wrap reveal">
+    <div class="download-wrap">
+      <div class="download-grid">
+        <div>
+          <span class="section-eyebrow" style="background: rgba(12,53,30,0.12); color: var(--forest);">Free at launch</span>
+          <h2>Cook smarter, today.</h2>
+          <p>The whole app is free at launch — AI meal plans, smart pantry, vegan mode, share-to-app, suburb community. No card. No paywall.</p>
+          <a href="#" class="btn btn-primary">Get it on Google Play →</a>
+          <p class="micro">Android first. iOS on the roadmap. By using ChowSA you agree to our <a href="terms.html" style="text-decoration: underline;">Terms</a> and <a href="privacy.html" style="text-decoration: underline;">Privacy Policy</a>.</p>
+        </div>
+        <div class="download-stage">
+          <div class="phone">
+            <img src="assets/screens/ai-plan.jpg" alt="AI Meal Plan generator inside ChowSA">
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ── FAQ ─────────────────────────────────────────────────────── -->
-<section class="faq" id="faq">
-  <span class="section-eyebrow">Questions</span>
-  <h2 class="section-title">Quick FAQ.</h2>
-
-  <details>
-    <summary>Is ChowSA free?</summary>
-    <p>Yes — at launch, ChowSA is 100% free. AI meal planning, the smart pantry, vegan mode, share-to-app, the lot. No subscription, no card. An optional Pro tier may land later via Google Play Billing.</p>
-  </details>
-  <details>
-    <summary>Which diets does the planner support?</summary>
-    <p>Standard, Vegan, Vegetarian, Anti-inflammatory, Diabetic-friendly, Carnivore, Keto, Mediterranean, Gluten-free, Halaal, Kosher, plus a Custom prompt for anything else (allergies, religious rules, fasting windows).</p>
-  </details>
-  <details>
-    <summary>How accurate are the price estimates?</summary>
-    <p>Each item has an estimated Rand range based on common SA retailers. The optional "paid R__" capture per item lets you log what you actually paid — over time ChowSA builds a real, household-level price history.</p>
-  </details>
-  <details>
-    <summary>Can I plan for a small household or a student budget?</summary>
-    <p>Yes. Set any budget from a few hundred Rand a week and any number of days from 1 to 14. The plan and shopping list scale to fit.</p>
-  </details>
-  <details>
-    <summary>What's Share-to-ChowSA?</summary>
-    <p>Tap "Share" on any recipe link in Instagram, TikTok, YouTube or your browser — pick ChowSA from the share sheet. We scrape the recipe and add the ingredients to your library.</p>
-  </details>
-  <details>
-    <summary>How do I delete my account?</summary>
-    <p>Settings → Privacy &amp; Data → Delete account. Everything tied to you is wiped within 7 days, per POPIA.</p>
-  </details>
-  <details>
-    <summary>Where can I get the app?</summary>
-    <p>Android via Google Play (launching soon). iOS is on the roadmap.</p>
-  </details>
+<section id="faq">
+  <div class="wrap reveal">
+    <span class="section-eyebrow">Questions</span>
+    <h2 class="section-title">Quick FAQ.</h2>
+    <div class="faq-grid">
+      <details class="faq">
+        <summary>Is ChowSA really free?</summary>
+        <p>Yes. At launch, every feature is unlocked with no subscription, no paywall and no card. An optional Pro tier may land later via Google Play Billing — for now everyone gets everything.</p>
+      </details>
+      <details class="faq">
+        <summary>Which diets does the planner support?</summary>
+        <p>Standard, Vegan, Vegetarian, Anti-inflammatory, Diabetic-friendly, Carnivore, Keto, Mediterranean, Gluten-free, Halaal, Kosher, plus a Custom prompt for anything else (allergies, religious rules, fasting windows).</p>
+      </details>
+      <details class="faq">
+        <summary>How accurate are the Rand price estimates?</summary>
+        <p>Each item has an estimated range based on common SA retailers. The optional "paid R__" capture lets you log what you actually paid — over time ChowSA learns your real local prices.</p>
+      </details>
+      <details class="faq">
+        <summary>Can I plan on a small budget?</summary>
+        <p>Yes. Set any budget from a few hundred Rand and any number of days from 1 to 14. The plan and shopping list scale to fit.</p>
+      </details>
+      <details class="faq">
+        <summary>What's Share-to-ChowSA?</summary>
+        <p>Tap "Share" on a recipe link in Instagram, TikTok, YouTube or your browser — pick ChowSA from the share sheet. We scrape the recipe and add the ingredients to your library.</p>
+      </details>
+      <details class="faq">
+        <summary>How do I delete my account?</summary>
+        <p>Settings → Privacy &amp; Data → Delete account. Everything tied to you is wiped within 7 days, per POPIA.</p>
+      </details>
+      <details class="faq">
+        <summary>Where can I get the app?</summary>
+        <p>Android via Google Play (launching soon). iOS is on the roadmap.</p>
+      </details>
+      <details class="faq">
+        <summary>What's the World Cup hub?</summary>
+        <p>A temporary tab for live scores and matchday banter during the 2026 tournament. It'll quietly disappear after the final whistle.</p>
+      </details>
+    </div>
+  </div>
 </section>
 
 <!-- ── FOOTER ─────────────────────────────────────────────────────── -->
 <footer>
-  <div class="foot-inner">
+  <div class="wrap">
     <div class="foot-grid">
       <div>
-        <div class="foot-logo">🥄 ChowSA</div>
+        <div class="foot-logo"><span class="dot" style="width:28px;height:28px;border-radius:9px;background:var(--mango);display:inline-flex;align-items:center;justify-content:center;font-size:18px;">🥄</span> ChowSA</div>
         <p class="foot-tag">
-          Plan the week. Know the cost before you shop. Cook anything. Built in Cape Town for every Mzansi kitchen. 🇿🇦
+          Plan the week. Cook anything. Spend less. Built in Cape Town for every Mzansi kitchen. 🇿🇦
         </p>
       </div>
       <div>
         <h5>Product</h5>
         <ul>
           <li><a href="#features">Features</a></li>
-          <li><a href="#howitworks">How it works</a></li>
+          <li><a href="#how">How it works</a></li>
           <li><a href="#diets">Diets</a></li>
           <li><a href="#download">Download</a></li>
         </ul>
@@ -840,6 +981,12 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
 
 </body>
