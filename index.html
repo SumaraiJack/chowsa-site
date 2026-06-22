@@ -3,29 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ChowSA — Mzansi's Smart Kitchen, in Your Pocket 🇿🇦</title>
-<meta name="description" content="Loadshedding-aware recipes, AI pantry, hyperlocal food spots, shared shopping lists. From boerewors to bobotie — ChowSA cooks with Mzansi.">
+<title>ChowSA — Plan the week. Know the cost before you shop. Cook anything.</title>
+<meta name="description" content="ChowSA plans your week, builds a budgeted shopping list, and cooks any recipe — vegan, halaal, kosher, diabetic, keto, or standard. Made in Mzansi for every household.">
+<meta name="keywords" content="meal planner south africa, AI meal plan, grocery budget app, vegan meal planner, halaal meal planner, kosher meal planner, recipe generator, SA pantry app, ChowSA">
 <meta name="theme-color" content="#0C351E">
-<meta property="og:title" content="ChowSA — Mzansi's Smart Kitchen 🇿🇦">
-<meta property="og:description" content="Stage 6? No stress. ChowSA knows what's in your pantry, what's on the grid, and what's cooking in your hood.">
+<meta property="og:title" content="ChowSA — Plan the week. Cook anything.">
+<meta property="og:description" content="AI meal planning, budget-aware shopping lists, and recipes for any diet. Made in Mzansi.">
 <meta property="og:type" content="website">
+<meta property="og:image" content="assets/screens/home.jpg">
+<meta name="twitter:card" content="summary_large_image">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
   :root {
     --forest:    #0C351E;
     --forest-2:  #1A4D2E;
-    --amber:     #E59B27;
-    --amber-2:   #F4B454;
+    --mango:     #E59B27;
+    --mango-2:   #F4B454;
     --cream:     #F4F1EA;
     --cream-2:   #FAF7F0;
     --ink:       #1A1A1A;
     --muted:     #55534E;
-    --pink:      #E91E63;
-    --sky:       #2D9CDB;
+    --leaf:      #4A8A3F;
     --gold:      #FFD23F;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -47,7 +49,6 @@
   a { color: inherit; text-decoration: none; }
   img { display: block; max-width: 100%; height: auto; }
 
-  /* ── Background pattern ───────────────────────────────────────────────── */
   body::before {
     content: '';
     position: fixed; inset: 0;
@@ -58,7 +59,7 @@
     z-index: -1;
   }
 
-  /* ── Nav ──────────────────────────────────────────────────────────────── */
+  /* ── Nav ───────────────────────────────────────────────── */
   nav {
     position: sticky; top: 0; z-index: 100;
     backdrop-filter: blur(12px);
@@ -82,25 +83,25 @@
   .nav-links a { color: var(--forest); opacity: 0.75; transition: opacity 0.2s; }
   .nav-links a:hover { opacity: 1; }
   .nav-cta {
-    background: var(--amber); color: white; font-weight: 800;
+    background: var(--mango); color: white; font-weight: 800;
     padding: 9px 18px; border-radius: 999px; font-size: 14px;
     transition: transform 0.15s;
   }
   .nav-cta:hover { transform: translateY(-1px); }
   @media (max-width: 720px) { .nav-links { display: none; } }
 
-  /* ── Hero ─────────────────────────────────────────────────────────────── */
+  /* ── Hero ───────────────────────────────────────────────── */
   .hero {
     position: relative; overflow: hidden;
     background: linear-gradient(135deg, var(--forest) 0%, var(--forest-2) 60%, #133A24 100%);
     color: white;
-    padding: 80px 24px 120px;
+    padding: 72px 24px 140px;
   }
   .hero::before {
     content: ''; position: absolute; inset: 0;
     background-image:
       radial-gradient(circle at 15% 30%, rgba(229,155,39,0.18) 0%, transparent 35%),
-      radial-gradient(circle at 85% 70%, rgba(255,210,63,0.12) 0%, transparent 40%);
+      radial-gradient(circle at 85% 70%, rgba(255,210,63,0.10) 0%, transparent 40%);
     pointer-events: none;
   }
   .hero-inner {
@@ -111,21 +112,17 @@
   @media (max-width: 880px) { .hero-inner { grid-template-columns: 1fr; gap: 40px; } }
 
   .hero h1 {
-    font-size: clamp(48px, 7vw, 96px);
+    font-size: clamp(44px, 6.4vw, 88px);
     color: white;
     margin-bottom: 24px;
   }
-  .hero h1 .accent { color: var(--amber-2); }
-  .hero h1 .flag {
-    font-family: 'Inter', sans-serif; font-size: 0.7em;
-    vertical-align: middle;
-  }
+  .hero h1 .accent { color: var(--mango-2); }
   .hero-sub {
     font-size: clamp(17px, 2vw, 21px);
     line-height: 1.55;
     color: rgba(255,255,255,0.85);
     max-width: 560px;
-    margin-bottom: 36px;
+    margin-bottom: 32px;
   }
   .hero-cta-row {
     display: flex; gap: 16px; flex-wrap: wrap;
@@ -138,7 +135,7 @@
     cursor: pointer; border: none;
   }
   .btn-primary {
-    background: var(--amber); color: white;
+    background: var(--mango); color: white;
     box-shadow: 0 8px 24px rgba(229,155,39,0.4);
   }
   .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(229,155,39,0.5); }
@@ -149,13 +146,12 @@
   .btn-ghost:hover { background: rgba(255,255,255,0.18); }
 
   .hero-meta {
-    margin-top: 36px;
-    display: flex; gap: 24px; flex-wrap: wrap;
-    font-size: 13px; color: rgba(255,255,255,0.7);
+    margin-top: 32px;
+    display: flex; gap: 22px; flex-wrap: wrap;
+    font-size: 13px; color: rgba(255,255,255,0.72);
   }
   .hero-meta strong { color: white; font-weight: 700; }
 
-  /* Phone mockup */
   .phone {
     position: relative; margin: 0 auto;
     width: 280px; max-width: 100%;
@@ -205,9 +201,9 @@
     100% { box-shadow: 0 0 0 14px rgba(255,210,63,0); }
   }
 
-  /* ── Why row ──────────────────────────────────────────────────────────── */
+  /* ── Why row ───────────────────────────────────────────────── */
   .why {
-    max-width: 1200px; margin: -60px auto 100px;
+    max-width: 1200px; margin: -70px auto 80px;
     padding: 0 24px; position: relative; z-index: 5;
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
   }
@@ -220,7 +216,7 @@
     transition: transform 0.2s;
   }
   .why-card:hover { transform: translateY(-4px); }
-  .why-emoji { font-size: 36px; margin-bottom: 12px; display: block; }
+  .why-emoji { font-size: 32px; margin-bottom: 12px; display: block; }
   .why-card h3 {
     font-size: 24px; margin-bottom: 8px;
   }
@@ -228,8 +224,8 @@
     color: var(--muted); font-size: 14px; line-height: 1.6;
   }
 
-  /* ── Section title ────────────────────────────────────────────────────── */
-  section.feature, section.story, section.pro, section.faq {
+  /* ── Section ───────────────────────────────────────────────── */
+  section.feature, section.story, section.pro, section.faq, section.howto {
     max-width: 1200px; margin: 0 auto;
     padding: 80px 24px;
   }
@@ -250,72 +246,122 @@
     line-height: 1.6; margin-bottom: 40px;
   }
 
-  /* ── Feature row (text + phone) ───────────────────────────────────────── */
-  .feature-row {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
-    align-items: center;
-  }
-  .feature-row.flip { grid-template-columns: 1fr 1fr; }
-  .feature-row.flip .feature-copy { order: 2; }
-  .feature-row.flip .feature-phone { order: 1; }
-  @media (max-width: 880px) {
-    .feature-row, .feature-row.flip { grid-template-columns: 1fr; gap: 30px; }
-    .feature-row.flip .feature-copy { order: unset; }
-    .feature-row.flip .feature-phone { order: unset; }
-  }
-  .feature-copy h2 { font-size: clamp(36px, 4.5vw, 56px); margin-bottom: 18px; }
-  .feature-copy p.lead {
-    font-size: 17px; color: var(--muted); line-height: 1.65; margin-bottom: 24px;
-  }
-  .feature-bullets { list-style: none; }
-  .feature-bullets li {
-    display: flex; align-items: flex-start; gap: 12px;
-    padding: 10px 0;
-    font-size: 15px; color: var(--ink);
-  }
-  .feature-bullets li::before {
-    content: '✓'; flex-shrink: 0;
-    width: 22px; height: 22px; border-radius: 50%;
-    background: var(--forest); color: white;
-    font-size: 12px; font-weight: 800;
-    display: flex; align-items: center; justify-content: center;
-    margin-top: 1px;
-  }
-  .feature-phone {
-    position: relative;
-    display: flex; justify-content: center;
-  }
-
-  /* ── Grid feature gallery ─────────────────────────────────────────────── */
+  /* ── Feature gallery ───────────────────────────────────────────────── */
   .gallery {
     background: linear-gradient(180deg, transparent 0%, rgba(12,53,30,0.04) 100%);
   }
   .gallery-grid {
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
     margin-top: 40px;
   }
-  @media (max-width: 880px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 880px) { .gallery-grid { grid-template-columns: 1fr; } }
   .gallery-card {
-    background: white; border-radius: 20px;
-    padding: 20px 18px 0;
+    background: white; border-radius: 24px;
+    padding: 28px 24px 0;
     box-shadow: 0 10px 30px rgba(12,53,30,0.08);
     overflow: hidden;
     transition: transform 0.2s;
     border: 1px solid rgba(12,53,30,0.04);
+    display: flex; flex-direction: column;
   }
   .gallery-card:hover { transform: translateY(-4px); }
+  .gallery-card .tag {
+    font-size: 11px; font-weight: 800; letter-spacing: 1.2px;
+    text-transform: uppercase; color: var(--mango);
+    margin-bottom: 8px;
+  }
   .gallery-card h4 {
-    font-size: 22px; margin-bottom: 4px;
+    font-size: 26px; margin-bottom: 8px; line-height: 1.05;
   }
   .gallery-card p {
-    font-size: 13px; color: var(--muted); margin-bottom: 16px; min-height: 36px;
+    font-size: 14px; color: var(--muted); margin-bottom: 18px;
+    line-height: 1.55; min-height: 44px;
   }
-  .gallery-card img {
-    border-radius: 12px 12px 0 0;
+  .gallery-card .shot {
+    border-radius: 16px 16px 0 0;
     width: 100%; box-shadow: 0 -6px 20px rgba(0,0,0,0.08);
+    margin-top: auto;
   }
 
-  /* ── Pro section ──────────────────────────────────────────────────────── */
+  /* ── How it works ───────────────────────────────────────────────── */
+  .howto { text-align: center; }
+  .howto-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    margin-top: 40px;
+  }
+  @media (max-width: 720px) { .howto-grid { grid-template-columns: 1fr; } }
+  .howto-card {
+    background: white; padding: 36px 24px;
+    border-radius: 24px;
+    border: 1px solid rgba(12,53,30,0.06);
+    text-align: left;
+    box-shadow: 0 6px 20px rgba(12,53,30,0.05);
+  }
+  .howto-card .step {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 56px; color: var(--mango);
+    line-height: 1; margin-bottom: 8px;
+    display: block;
+  }
+  .howto-card h4 { font-size: 26px; margin-bottom: 8px; }
+  .howto-card p { color: var(--muted); font-size: 14px; line-height: 1.6; }
+
+  /* ── Diet strip ───────────────────────────────────────────────── */
+  .diet-strip {
+    background: var(--cream-2);
+    padding: 60px 24px;
+    border-top: 1px solid rgba(12,53,30,0.06);
+    border-bottom: 1px solid rgba(12,53,30,0.06);
+  }
+  .diet-inner {
+    max-width: 1200px; margin: 0 auto; text-align: center;
+  }
+  .diet-inner h2 {
+    font-size: clamp(32px, 4vw, 48px);
+    margin-bottom: 12px;
+  }
+  .diet-inner p {
+    color: var(--muted); font-size: 16px; margin-bottom: 28px;
+    max-width: 620px; margin-left: auto; margin-right: auto;
+  }
+  .diet-chips {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    justify-content: center;
+  }
+  .diet-chip {
+    background: white; color: var(--forest);
+    border: 1.5px solid rgba(12,53,30,0.12);
+    padding: 10px 18px; border-radius: 999px;
+    font-size: 14px; font-weight: 700;
+  }
+  .diet-chip.on {
+    background: var(--forest); color: white;
+    border-color: var(--forest);
+  }
+
+  /* ── Built for SA strip ───────────────────────────────────────────────── */
+  .story { text-align: center; }
+  .story-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    margin-top: 40px;
+  }
+  @media (max-width: 720px) { .story-grid { grid-template-columns: 1fr; } }
+  .story-card {
+    background: white; padding: 32px 24px;
+    border-radius: 20px;
+    border: 1px solid rgba(12,53,30,0.06);
+    text-align: left;
+  }
+  .story-card .num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px; color: var(--mango);
+    line-height: 1;
+    display: block; margin-bottom: 8px;
+  }
+  .story-card h4 { font-size: 24px; margin-bottom: 8px; }
+  .story-card p { color: var(--muted); font-size: 14px; }
+
+  /* ── CTA pro ───────────────────────────────────────────────── */
   .pro-wrap {
     background: linear-gradient(135deg, var(--forest) 0%, var(--forest-2) 100%);
     color: white;
@@ -340,14 +386,14 @@
     color: white; font-size: clamp(40px, 5vw, 64px);
     margin-bottom: 18px;
   }
-  .pro-grid h2 .accent { color: var(--amber-2); }
+  .pro-grid h2 .accent { color: var(--mango-2); }
   .pro-grid .lead {
-    font-size: 17px; color: rgba(255,255,255,0.8);
+    font-size: 17px; color: rgba(255,255,255,0.85);
     line-height: 1.65; margin-bottom: 28px;
   }
   .pro-features { list-style: none; }
   .pro-features li {
-    padding: 10px 0;
+    padding: 9px 0;
     color: rgba(255,255,255,0.95);
     font-size: 15px;
     display: flex; align-items: flex-start; gap: 12px;
@@ -355,7 +401,7 @@
   .pro-features li .ico {
     width: 28px; height: 28px; border-radius: 8px;
     background: rgba(229,155,39,0.25);
-    color: var(--amber-2);
+    color: var(--mango-2);
     display: inline-flex; align-items: center; justify-content: center;
     font-size: 16px; flex-shrink: 0;
   }
@@ -366,59 +412,29 @@
   }
   .price-card .badge {
     display: inline-block;
-    background: var(--amber); color: white;
+    background: var(--mango); color: white;
     font-size: 11px; font-weight: 800;
     padding: 4px 12px; border-radius: 999px;
     text-transform: uppercase; letter-spacing: 1px;
     margin-bottom: 12px;
   }
-  .price-card h3 {
-    font-size: 28px; margin-bottom: 6px;
-  }
+  .price-card h3 { font-size: 28px; margin-bottom: 6px; }
   .price-card .price {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 72px; color: var(--forest);
     line-height: 1; margin: 16px 0 4px;
   }
-  .price-card .price small {
-    font-size: 16px; color: var(--muted); font-weight: 400;
-  }
+  .price-card .price small { font-size: 16px; color: var(--muted); font-weight: 400; }
   .price-card .price-note {
-    font-size: 12px; color: var(--muted);
-    margin-bottom: 24px;
+    font-size: 12px; color: var(--muted); margin-bottom: 24px;
   }
   .price-card .btn { width: 100%; justify-content: center; }
   .price-card .micro {
     font-size: 11px; color: var(--muted);
-    margin-top: 14px; text-align: center;
-    line-height: 1.5;
+    margin-top: 14px; text-align: center; line-height: 1.5;
   }
 
-  /* ── Story strip ──────────────────────────────────────────────────────── */
-  .story {
-    text-align: center;
-  }
-  .story-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
-    margin-top: 40px;
-  }
-  @media (max-width: 720px) { .story-grid { grid-template-columns: 1fr; } }
-  .story-card {
-    background: white; padding: 32px 24px;
-    border-radius: 20px;
-    border: 1px solid rgba(12,53,30,0.06);
-    text-align: left;
-  }
-  .story-card .num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 48px; color: var(--amber);
-    line-height: 1;
-    display: block; margin-bottom: 8px;
-  }
-  .story-card h4 { font-size: 24px; margin-bottom: 8px; }
-  .story-card p { color: var(--muted); font-size: 14px; }
-
-  /* ── FAQ ──────────────────────────────────────────────────────────────── */
+  /* ── FAQ ───────────────────────────────────────────────── */
   .faq details {
     background: white;
     border-radius: 16px;
@@ -437,7 +453,7 @@
   }
   .faq summary::-webkit-details-marker { display: none; }
   .faq summary::after {
-    content: '+'; font-size: 24px; color: var(--amber); font-weight: 400;
+    content: '+'; font-size: 24px; color: var(--mango); font-weight: 400;
     transition: transform 0.2s;
   }
   .faq details[open] summary::after { transform: rotate(45deg); }
@@ -446,7 +462,7 @@
     font-size: 15px;
   }
 
-  /* ── Footer ───────────────────────────────────────────────────────────── */
+  /* ── Footer ───────────────────────────────────────────────── */
   footer {
     background: var(--forest);
     color: rgba(255,255,255,0.7);
@@ -466,7 +482,7 @@
   }
   footer ul { list-style: none; }
   footer li { padding: 6px 0; font-size: 14px; }
-  footer a:hover { color: var(--amber-2); }
+  footer a:hover { color: var(--mango-2); }
   .foot-logo {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 32px; color: white;
@@ -481,20 +497,9 @@
     color: rgba(255,255,255,0.5);
   }
 
-  /* ── Confetti emoji float ─────────────────────────────────────────────── */
-  .float-emoji {
-    position: absolute; font-size: 32px;
-    opacity: 0.6;
-    animation: float 6s ease-in-out infinite;
-  }
-  @keyframes float {
-    0%, 100% { transform: translateY(0) rotate(-5deg); }
-    50%      { transform: translateY(-18px) rotate(5deg); }
-  }
-
-  /* ── Marquee strip ────────────────────────────────────────────────────── */
+  /* ── Marquee strip ───────────────────────────────────────────────── */
   .strip {
-    background: var(--amber);
+    background: var(--mango);
     color: var(--forest);
     padding: 16px 0;
     overflow: hidden;
@@ -504,9 +509,9 @@
   }
   .strip-track {
     display: inline-block;
-    animation: marquee 28s linear infinite;
+    animation: marquee 32s linear infinite;
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 28px;
+    font-size: 26px;
     letter-spacing: 2px;
   }
   .strip-track span { margin-right: 60px; }
@@ -518,281 +523,272 @@
 </head>
 <body>
 
-<!-- ── NAV ──────────────────────────────────────────────────────────── -->
+<!-- ── NAV ─────────────────────────────────────────────────────── -->
 <nav>
   <div class="nav-inner">
     <a href="#" class="logo"><span class="spoon">🥄</span> ChowSA</a>
     <div class="nav-links">
       <a href="#features">Features</a>
-      <a href="#community">Community</a>
-      <a href="#pro">Pro</a>
+      <a href="#howitworks">How it works</a>
+      <a href="#diets">Diets</a>
       <a href="#faq">FAQ</a>
     </div>
-    <a href="#pro" class="nav-cta">Download · Free</a>
+    <a href="#download" class="nav-cta">Get the app</a>
   </div>
 </nav>
 
-<!-- ── HERO ─────────────────────────────────────────────────────────── -->
+<!-- ── HERO ─────────────────────────────────────────────────────── -->
 <section class="hero">
   <div class="hero-inner">
     <div>
       <div class="hero-tag">
         <span class="pulse-dot"></span>
-        Made in Mzansi · Built for loadshedding
+        Made in Mzansi · Plan · Cook · Budget
       </div>
       <h1>
-        What's cooking<br>
-        <span class="accent">tonight</span>, chom? <span class="flag">🇿🇦</span>
+        Plan the week.<br>
+        Know the cost<br>
+        <span class="accent">before you shop.</span>
       </h1>
       <p class="hero-sub">
-        ChowSA is Mzansi's smart kitchen — AI pantry, hyperlocal food spots,
-        shared shopping lists, and recipes that <em>actually</em> know when the
-        power's off. From <strong>boerewors to bobotie</strong>, samp to sosaties.
+        ChowSA generates a full week of meals from your budget and diet, then
+        builds the shopping list — vegan, halaal, kosher, diabetic, keto, or
+        just <strong>what's for dinner tonight</strong>. AI does the planning.
+        You do the cooking.
       </p>
       <div class="hero-cta-row">
-        <a href="#pro" class="btn btn-primary">Get the App →</a>
+        <a href="#download" class="btn btn-primary">Get the app →</a>
         <a href="#features" class="btn btn-ghost">See what it does</a>
       </div>
       <div class="hero-meta">
-        <span>🍳 <strong>Loadshedding-aware</strong> recipes</span>
-        <span>📍 <strong>Hyperlocal</strong> hubs</span>
-        <span>🤖 <strong>AI-powered</strong> matching</span>
+        <span>🗓️ <strong>AI meal plans</strong> in seconds</span>
+        <span>💸 <strong>Budget-aware</strong> shopping lists</span>
+        <span>🥬 <strong>Any diet</strong>, any household</span>
       </div>
     </div>
-    <div class="feature-phone">
+    <div>
       <div class="phone">
         <div class="phone-glow"></div>
-        <img src="assets/img/home.jpg" alt="ChowSA home screen">
+        <img src="assets/screens/home.jpg" alt="ChowSA home screen — plan the week, know the cost before you shop">
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── MARQUEE STRIP ────────────────────────────────────────────────── -->
+<!-- ── MARQUEE STRIP ─────────────────────────────────────────────────────── -->
 <div class="strip">
   <div class="strip-track">
-    <span>BRAAI · BOEREWORS · BOBOTIE · MALVA PUDDING · SAMP & BEANS · POTJIE · SOSATIES · KOEKSISTERS · BUNNY CHOW · MELKTERT · CHAKALAKA · UMNGQUSHO ·</span>
-    <span>BRAAI · BOEREWORS · BOBOTIE · MALVA PUDDING · SAMP & BEANS · POTJIE · SOSATIES · KOEKSISTERS · BUNNY CHOW · MELKTERT · CHAKALAKA · UMNGQUSHO ·</span>
+    <span>BOBOTIE · BREDIE · BRAAI · BUNNY CHOW · CHAKALAKA · KOEKSISTERS · MALVA · POTJIE · ROOIBOS · SAMP &amp; BEANS · UMNGQUSHO · BOEREWORS ·</span>
+    <span>BOBOTIE · BREDIE · BRAAI · BUNNY CHOW · CHAKALAKA · KOEKSISTERS · MALVA · POTJIE · ROOIBOS · SAMP &amp; BEANS · UMNGQUSHO · BOEREWORS ·</span>
   </div>
 </div>
 
-<!-- ── WHY ──────────────────────────────────────────────────────────── -->
+<!-- ── WHY ─────────────────────────────────────────────────────── -->
 <section class="why">
   <div class="why-card">
-    <span class="why-emoji">⚡</span>
-    <h3>Loadshedding-Aware</h3>
-    <p>POWER ON? Full electrical menu. Stage 6? ChowSA filters to coals, gas-stove, and no-electricity recipes automatically.</p>
+    <span class="why-emoji">🗓️</span>
+    <h3>Plan a whole week</h3>
+    <p>Pick budget, days and diet. AI fills breakfast, lunch and dinner, then drops it all into your planner.</p>
   </div>
   <div class="why-card">
-    <span class="why-emoji">📍</span>
-    <h3>Hyperlocal Hubs</h3>
-    <p>Your suburb. Your food trucks. Your markets. Your braai banter. ChowSA scopes every feed to where you actually live.</p>
+    <span class="why-emoji">💸</span>
+    <h3>See the bill first</h3>
+    <p>Every shopping list shows a live basket-vs-budget total in Rand — green if you're under, red if you're over.</p>
   </div>
   <div class="why-card">
-    <span class="why-emoji">🤖</span>
-    <h3>Snap. Scan. Cook.</h3>
-    <p>Snap your fridge — AI lists your ingredients. Paste a TikTok or Instagram link — we extract the full recipe. No typing.</p>
+    <span class="why-emoji">✨</span>
+    <h3>Cook anything</h3>
+    <p>Type a dish, paste an Instagram link, or snap your fridge. Get a full recipe with steps and ingredients.</p>
   </div>
 </section>
 
-<!-- ── FEATURE 1: PANTRY ────────────────────────────────────────────── -->
-<section class="feature" id="features">
-  <div class="feature-row">
-    <div class="feature-copy">
-      <span class="section-eyebrow">Smart Pantry</span>
-      <h2>Your fridge knows. <span style="color:var(--amber)">Now your phone does too.</span></h2>
-      <p class="lead">
-        Open the door, snap a photo, ChowSA reads what's inside. Or pull from your gallery.
-        Or just type. We match SA brands too — Albany, Iwisa, Mrs Balls, the lot.
-      </p>
-      <ul class="feature-bullets">
-        <li>Scan the inside of your fridge — AI detects every ingredient</li>
-        <li>Pulls from gallery photos or manual entry</li>
-        <li>Generates recipes that actually use what you have</li>
-        <li>Filters by load-shedding state and budget</li>
-      </ul>
-    </div>
-    <div class="feature-phone">
-      <div class="phone" style="transform: rotate(3deg);">
-        <div class="phone-glow" style="background: radial-gradient(circle, rgba(229,155,39,0.4) 0%, transparent 70%);"></div>
-        <img src="assets/img/pantry.jpg" alt="Smart Pantry">
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── FEATURE 2: LOADSHEDDING ──────────────────────────────────────── -->
-<section class="feature">
-  <div class="feature-row flip">
-    <div class="feature-copy">
-      <span class="section-eyebrow">⚡ Loadshedding Mode</span>
-      <h2>Stage 6? <span style="color:var(--amber)">No stress.</span></h2>
-      <p class="lead">
-        ChowSA reads the grid for your suburb and adapts the whole menu.
-        Coals warm? You'll see <strong>Fire Up the Grid</strong> + braai recipes.
-        Power off? Filter to no-electricity, microwave-only, or one-pot.
-      </p>
-      <ul class="feature-bullets">
-        <li>Live load-shedding stage detection by location</li>
-        <li>"Needs Electricity" vs "Load-Shedding Friendly" badges on every recipe</li>
-        <li>One-tap browse for Braai Recipes when the coals are hot</li>
-        <li>Scrambled Eggs on Braai Toast — sorted, even during stage 8</li>
-      </ul>
-    </div>
-    <div class="feature-phone">
-      <div class="phone" style="transform: rotate(-3deg);">
-        <div class="phone-glow"></div>
-        <img src="assets/img/loadshedding.jpg" alt="Loadshedding-aware home">
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── FEATURE 3: COMMUNITY HUB ─────────────────────────────────────── -->
-<section class="feature" id="community" style="background: rgba(12,53,30,0.04); border-radius: 40px; margin: 0 24px;">
-  <div class="feature-row" style="max-width: 1200px; margin: 0 auto;">
-    <div class="feature-copy">
-      <span class="section-eyebrow">📍 Your Local Hub</span>
-      <h2>Mzansi cooks <span style="color:var(--amber)">in real-time.</span></h2>
-      <p class="lead">
-        Every ChowSA user is plugged into their suburb's live food feed.
-        Catch the food truck before it moves on. Find Saturday's potjie gathering.
-        Drop a hot grocery deal. Banter with the braai masters.
-      </p>
-      <ul class="feature-bullets">
-        <li><strong>Spotted</strong> — food trucks, pop-ups, street food alerts with GPS pins</li>
-        <li><strong>Gatherings</strong> — local markets, potjies, festivals</li>
-        <li><strong>The Pantry</strong> — grocery deals & stock alerts from your hood</li>
-        <li><strong>What's Cooking</strong> — daily social feed of what neighbours are making</li>
-        <li><strong>Braai Recipes</strong> — coals, sosaties & boerie-roll inspo</li>
-      </ul>
-    </div>
-    <div class="feature-phone">
-      <div class="phone">
-        <div class="phone-glow"></div>
-        <img src="assets/img/community.jpg" alt="Community Hub">
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── GALLERY ──────────────────────────────────────────────────────── -->
-<section class="feature gallery">
-  <span class="section-eyebrow">🔥 The Full Spread</span>
-  <h2 class="section-title">More than just recipes.</h2>
+<!-- ── FEATURES (gallery) ─────────────────────────────────────────────────────── -->
+<section class="feature gallery" id="features">
+  <span class="section-eyebrow">Six things ChowSA does</span>
+  <h2 class="section-title">One app. The whole kitchen.</h2>
   <p class="section-lead">
-    ChowSA is the whole kitchen toolkit — pantry, planner, shopping, social, braai HQ. One app, the way South Africans actually cook.
+    Built for families budgeting groceries, students on R500 a week, singles who want
+    variety, and households with diet rules other apps ignore.
   </p>
 
   <div class="gallery-grid">
     <div class="gallery-card">
-      <h4>Spotted in your suburb</h4>
-      <p>Burger truck parked near you? Tap the pin, get the GPS spot, beat the queue.</p>
-      <img src="assets/img/spotted.jpg" alt="Food truck spotted">
+      <span class="tag">Weekly Planner</span>
+      <h4>Map out the week</h4>
+      <p>Tap any day to assign breakfast, lunch or dinner. Green dots when the day is full.</p>
+      <img class="shot" src="assets/screens/planner.jpg" alt="Weekly meal planner calendar in ChowSA">
     </div>
     <div class="gallery-card">
-      <h4>Local Braai Hub</h4>
-      <p>Peri-peri spatchcock recipes, coal banter, marinade tips. Strictly for the masters of the fire.</p>
-      <img src="assets/img/braai.jpg" alt="Braai hub">
+      <span class="tag">AI Meal Plan</span>
+      <h4>Set a budget, get a plan</h4>
+      <p>Budget, 1–14 days, diet, meal slots. AI builds the grid and the shopping list.</p>
+      <img class="shot" src="assets/screens/ai-plan.jpg" alt="AI meal plan generator with budget, days, diet and meal slots">
     </div>
     <div class="gallery-card">
-      <h4>Shopping with Rand estimates</h4>
-      <p>Tag items, get the basket total in real Rand before you leave the house. Share with your partner.</p>
-      <img src="assets/img/shopping.jpg" alt="Shopping list">
+      <span class="tag">Smart Pantry</span>
+      <h4>Cook from the fridge</h4>
+      <p>Snap a photo, AI reads the ingredients, suggests three recipes you can actually make.</p>
+      <img class="shot" src="assets/screens/pantry.jpg" alt="Smart Pantry — snap your fridge and get recipes">
     </div>
     <div class="gallery-card">
-      <h4>Weekly Menu Planner</h4>
-      <p>Plan your week of Mzansi meals. Auto-generate shopping lists. Share with the family.</p>
-      <img src="assets/img/menu_planner.jpg" alt="Menu planner">
+      <span class="tag">Shopping &amp; Budget</span>
+      <h4>Rands, not guesses</h4>
+      <p>Live basket total. Capture what you actually paid to build a real SA price history.</p>
+      <img class="shot" src="assets/screens/shopping.jpg" alt="Shopping list with live Rand basket total">
+    </div>
+    <div class="gallery-card">
+      <span class="tag">Vegan Mode</span>
+      <h4>One toggle, full swap</h4>
+      <p>Flip Vegan Mode and every recipe swaps meat, dairy and eggs for SA-available alternatives.</p>
+      <img class="shot" src="assets/screens/home.jpg" alt="Vegan Mode toggle on the ChowSA home screen">
+    </div>
+    <div class="gallery-card">
+      <span class="tag">Share-to-ChowSA</span>
+      <h4>Pull recipes from anywhere</h4>
+      <p>Share an Instagram, TikTok, YouTube or blog link. We scrape the recipe — ingredients and steps.</p>
+      <img class="shot" src="assets/screens/recipe.jpg" alt="Generate any recipe or scan a link in ChowSA">
     </div>
   </div>
 </section>
 
-<!-- ── STORY ────────────────────────────────────────────────────────── -->
+<!-- ── HOW IT WORKS ─────────────────────────────────────────────────────── -->
+<section class="howto" id="howitworks">
+  <span class="section-eyebrow">How it works</span>
+  <h2 class="section-title" style="margin-left:auto;margin-right:auto;">Three steps, one cooked dinner.</h2>
+
+  <div class="howto-grid">
+    <div class="howto-card">
+      <span class="step">01</span>
+      <h4>Set your budget &amp; diet</h4>
+      <p>Tell ChowSA your weekly food budget and how you eat — standard, vegan, halaal, kosher, diabetic, keto, gluten-free, more.</p>
+    </div>
+    <div class="howto-card">
+      <span class="step">02</span>
+      <h4>AI plans your week</h4>
+      <p>A full grid of breakfasts, lunches and dinners — each with real photos and SA-localised ingredients — drops into your planner.</p>
+    </div>
+    <div class="howto-card">
+      <span class="step">03</span>
+      <h4>Cook &amp; tick off the list</h4>
+      <p>The shopping list builds itself. Mark off items as you shop, watch the basket total update in Rand.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── DIETS ─────────────────────────────────────────────────────── -->
+<section class="diet-strip" id="diets">
+  <div class="diet-inner">
+    <span class="section-eyebrow">Any diet, any household</span>
+    <h2>Finally, a planner that gets it.</h2>
+    <p>
+      Vegan, halaal, kosher, diabetic, gluten-free — the rules your household already lives by are
+      first-class options, not buried filters. Custom prompts welcome.
+    </p>
+    <div class="diet-chips">
+      <span class="diet-chip on">Standard</span>
+      <span class="diet-chip">Vegan</span>
+      <span class="diet-chip">Vegetarian</span>
+      <span class="diet-chip">Anti-inflammatory</span>
+      <span class="diet-chip">Diabetic-friendly</span>
+      <span class="diet-chip">Carnivore</span>
+      <span class="diet-chip">Keto</span>
+      <span class="diet-chip">Mediterranean</span>
+      <span class="diet-chip">Gluten-free</span>
+      <span class="diet-chip">Halaal</span>
+      <span class="diet-chip">Kosher</span>
+      <span class="diet-chip">Custom…</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── BUILT FOR SA ─────────────────────────────────────────────────────── -->
 <section class="story">
   <span class="section-eyebrow">Built for SA</span>
-  <h2 class="section-title" style="margin-left:auto;margin-right:auto;">Made for Mzansi, not New York.</h2>
+  <h2 class="section-title" style="margin-left:auto;margin-right:auto;">Made for Mzansi, head to toe.</h2>
   <p class="section-lead" style="margin-left:auto;margin-right:auto;">
-    Most recipe apps think "load-shedding" is a typo. ChowSA was built from Cape Town for the way we actually cook —
-    Rand pricing, SA brands, our suburbs, our heritage dishes, our power cuts.
+    Bobotie, bredie, koeksisters and rooibos sit in the recipe library where mac-and-cheese sits everywhere else.
+    Local brands, Rand prices, hyper-local community channels in your suburb.
   </p>
   <div class="story-grid">
     <div class="story-card">
-      <span class="num">100%</span>
-      <h4>Local-first</h4>
-      <p>Built around SA suburbs, SA brands (Albany, Mrs Balls, Iwisa), Rand pricing, our seasons.</p>
+      <span class="num">SA</span>
+      <h4>Real Rand pricing</h4>
+      <p>Every shopping list speaks in Rands. Capture what you actually paid and ChowSA gets sharper.</p>
     </div>
     <div class="story-card">
-      <span class="num">0</span>
-      <h4>Boring nights</h4>
-      <p>AI suggests dinner based on weather, day-of-week, what's in your fridge, and grid state.</p>
+      <span class="num">📍</span>
+      <h4>Hyperlocal community</h4>
+      <p>Suburb-level channels unlock once 10 neighbours are active — Spotted, Gatherings, Pantry, What's Cooking, Braai.</p>
     </div>
     <div class="story-card">
-      <span class="num">72</span>
-      <h4>World Cup-ready</h4>
-      <p>Live Bafana scores on your home screen. Stadium banter chat. Braai recipes for matchday.</p>
+      <span class="num">⚽</span>
+      <h4>World Cup hub</h4>
+      <p>Live banter and scores during the 2026 tournament. A temporary feature for matchday energy.</p>
     </div>
   </div>
 </section>
 
-<!-- ── PRO ──────────────────────────────────────────────────────────── -->
-<section class="pro" id="pro">
+<!-- ── DOWNLOAD ─────────────────────────────────────────────────────── -->
+<section class="pro" id="download">
   <div class="pro-wrap">
     <div class="pro-grid">
       <div>
-        <span class="section-eyebrow" style="background:var(--amber);color:white;">★ Free at launch</span>
-        <h2>Everything unlocked. <span class="accent">Zero rand.</span></h2>
+        <span class="section-eyebrow" style="background:var(--mango);color:white;">Free at launch</span>
+        <h2>The whole kitchen. <span class="accent">Free.</span></h2>
         <p class="lead">
-          ChowSA launches 100% free for everyone — every recipe scrape, every
-          shopping list, every Local Hub, every meal plan. No subscription, no
-          paywall, no card required.
+          AI meal planning, smart pantry, share-to-app, vegan swaps, community channels — everything unlocked
+          on day one. No subscription, no card, no paywall.
         </p>
         <ul class="pro-features">
-          <li><span class="ico">∞</span> Unlimited AI pantry generations</li>
-          <li><span class="ico">📡</span> Full Local Hub for every suburb</li>
-          <li><span class="ico">⚡</span> Loadshedding-aware recipe filters</li>
-          <li><span class="ico">📊</span> Smart shopping lists with SA price estimates</li>
-          <li><span class="ico">👨‍👩‍👧</span> Partner Link — share lists + plans live</li>
-          <li><span class="ico">⚽</span> Live World Cup stadium banter</li>
+          <li><span class="ico">🗓️</span> Weekly meal planner</li>
+          <li><span class="ico">✨</span> Unlimited AI meal plans</li>
+          <li><span class="ico">📸</span> Smart Pantry — snap your fridge</li>
+          <li><span class="ico">💸</span> Budget-aware shopping lists</li>
+          <li><span class="ico">🥬</span> Vegan Mode global toggle</li>
+          <li><span class="ico">🔗</span> Share-to-ChowSA from any app</li>
         </ul>
       </div>
       <div class="price-card">
-        <span class="badge">Coming soon</span>
-        <h3>ChowSA Pro</h3>
-        <div style="color:var(--muted);font-size:14px;">An optional Pro tier with extra perks lands in a future update via Google Play Billing — for now everyone gets everything.</div>
-        <div class="price">Free<small>&nbsp;for now</small></div>
-        <div class="price-note">No card, no signup — just download and cook.</div>
-        <a href="#" class="btn btn-primary">Download on Google Play →</a>
+        <span class="badge">Android · Google Play</span>
+        <h3>ChowSA</h3>
+        <div style="color:var(--muted);font-size:14px;">Every feature, every diet, every household. iOS on the roadmap.</div>
+        <div class="price">Free<small>&nbsp;forever, on the basics</small></div>
+        <div class="price-note">No card, no signup. Just download and cook.</div>
+        <a href="#" class="btn btn-primary">Get it on Google Play →</a>
         <p class="micro">By using ChowSA you agree to our <a href="terms.html" style="text-decoration:underline;">Terms</a> and <a href="privacy.html" style="text-decoration:underline;">Privacy Policy</a>.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── FAQ ──────────────────────────────────────────────────────────── -->
+<!-- ── FAQ ─────────────────────────────────────────────────────── -->
 <section class="faq" id="faq">
   <span class="section-eyebrow">Questions</span>
   <h2 class="section-title">Quick FAQ.</h2>
 
   <details>
     <summary>Is ChowSA free?</summary>
-    <p>Yes — at launch, ChowSA is 100% free with no subscription, no paywall, and no card required. An optional Pro tier may land in a future update via Google Play Billing, but for now everyone gets every feature unlocked.</p>
+    <p>Yes — at launch, ChowSA is 100% free. AI meal planning, the smart pantry, vegan mode, share-to-app, the lot. No subscription, no card. An optional Pro tier may land later via Google Play Billing.</p>
   </details>
   <details>
-    <summary>How does loadshedding mode work?</summary>
-    <p>ChowSA reads your suburb's current load-shedding stage and surfaces recipes tagged "Load-Shedding Friendly" (gas, coals, microwave, no-cook) when the power is off. When power's on, the full electrical menu opens up automatically.</p>
+    <summary>Which diets does the planner support?</summary>
+    <p>Standard, Vegan, Vegetarian, Anti-inflammatory, Diabetic-friendly, Carnivore, Keto, Mediterranean, Gluten-free, Halaal, Kosher, plus a Custom prompt for anything else (allergies, religious rules, fasting windows).</p>
   </details>
   <details>
-    <summary>Can I share recipes and shopping lists with my partner?</summary>
-    <p>Yes. Link your partner in Settings → Partner Link. Shared shopping lists update live across both phones, and your partner sees your meal plans in real-time.</p>
+    <summary>How accurate are the price estimates?</summary>
+    <p>Each item has an estimated Rand range based on common SA retailers. The optional "paid R__" capture per item lets you log what you actually paid — over time ChowSA builds a real, household-level price history.</p>
   </details>
   <details>
-    <summary>Which payment methods do you support?</summary>
-    <p>None right now — ChowSA is free for everyone at launch, no payment of any kind. When the optional Pro tier ships later, it'll be billed through Google Play Billing on Android (card, Google Pay, or carrier billing — whatever you've got linked to your Play account).</p>
+    <summary>Can I plan for a small household or a student budget?</summary>
+    <p>Yes. Set any budget from a few hundred Rand a week and any number of days from 1 to 14. The plan and shopping list scale to fit.</p>
+  </details>
+  <details>
+    <summary>What's Share-to-ChowSA?</summary>
+    <p>Tap "Share" on any recipe link in Instagram, TikTok, YouTube or your browser — pick ChowSA from the share sheet. We scrape the recipe and add the ingredients to your library.</p>
   </details>
   <details>
     <summary>How do I delete my account?</summary>
-    <p>Settings → Privacy & Data Settings → Delete account. We wipe everything tied to you within 7 days, per POPIA.</p>
+    <p>Settings → Privacy &amp; Data → Delete account. Everything tied to you is wiped within 7 days, per POPIA.</p>
   </details>
   <details>
     <summary>Where can I get the app?</summary>
@@ -800,22 +796,23 @@
   </details>
 </section>
 
-<!-- ── FOOTER ───────────────────────────────────────────────────────── -->
+<!-- ── FOOTER ─────────────────────────────────────────────────────── -->
 <footer>
   <div class="foot-inner">
     <div class="foot-grid">
       <div>
         <div class="foot-logo">🥄 ChowSA</div>
         <p class="foot-tag">
-          Mzansi's smart kitchen. Loadshedding-aware. Built in Cape Town with love and a little chakalaka. 🇿🇦
+          Plan the week. Know the cost before you shop. Cook anything. Built in Cape Town for every Mzansi kitchen. 🇿🇦
         </p>
       </div>
       <div>
         <h5>Product</h5>
         <ul>
           <li><a href="#features">Features</a></li>
-          <li><a href="#community">Community</a></li>
-          <li><a href="#pro">Pro</a></li>
+          <li><a href="#howitworks">How it works</a></li>
+          <li><a href="#diets">Diets</a></li>
+          <li><a href="#download">Download</a></li>
         </ul>
       </div>
       <div>
@@ -836,7 +833,7 @@
     </div>
     <div class="foot-bottom">
       <span>© <span id="year"></span> ChowSA. All rights reserved.</span>
-      <span>Made with 🔥 in Cape Town · Powered by Supabase + Flutter</span>
+      <span>Made with care in Cape Town · Flutter + Supabase</span>
     </div>
   </div>
 </footer>
