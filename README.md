@@ -1,6 +1,6 @@
-# ChowSA marketing site
+# KosPot marketing site
 
-Static site for ChowSA — landing page, privacy policy, terms, account deletion.
+Static site for KosPot — landing page, privacy policy, terms, account deletion.
 Designed to deploy on GitHub Pages with zero build step.
 
 ## Files
@@ -19,16 +19,16 @@ site/
 
 ### One-time setup
 
-1. Create a new public repo on GitHub: **`chowsa-site`** (anything is fine; name affects the URL).
+1. Create a new public repo on GitHub: **`kospot-site`** (anything is fine; name affects the URL).
 2. From a terminal in this folder:
 
    ```bash
-   cd "G:/Claude/ChowSA/marketing/site"
+   cd "G:/Claude/KosPot/marketing/site"
    git init
    git add -A
-   git commit -m "Initial ChowSA marketing site"
+   git commit -m "Initial KosPot marketing site"
    git branch -M main
-   git remote add origin https://github.com/SumaraiJack/chowsa-site.git
+   git remote add origin https://github.com/SumaraiJack/kospot-site.git
    git push -u origin main
    ```
 
@@ -37,12 +37,12 @@ site/
    - Branch: **main** · folder: **/ (root)**
    - Save. First build takes ~1 minute.
 
-4. Site URL will be: **`https://sumaraijack.github.io/chowsa-site/`**
+4. Site URL will be: **`https://sumaraijack.github.io/kospot-site/`**
 
 ### Updating later
 
 ```bash
-cd "G:/Claude/ChowSA/marketing/site"
+cd "G:/Claude/KosPot/marketing/site"
 git add -A
 git commit -m "tweak: <what changed>"
 git push
@@ -63,9 +63,9 @@ When you're ready to point a real domain (e.g. `chowsa.co.za`) at this:
 
 ## URLs the Play Console listing will reference
 
-- **Privacy Policy** → `https://sumaraijack.github.io/chowsa-site/privacy.html`
-- **Account Deletion** → `https://sumaraijack.github.io/chowsa-site/delete-account.html`
-- **Marketing site** → `https://sumaraijack.github.io/chowsa-site/`
+- **Privacy Policy** → `https://sumaraijack.github.io/kospot-site/privacy.html`
+- **Account Deletion** → `https://sumaraijack.github.io/kospot-site/delete-account.html`
+- **Marketing site** → `https://sumaraijack.github.io/kospot-site/`
 
 Wire these into Play Console → Store Listing + App Content.
 
